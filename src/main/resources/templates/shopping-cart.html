@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shopping cart</title>
+</head>
+<body>
+    <script src="/js/cart-management.js"></script>
+    <header th:replace="~{base :: header}"></header>
+    <h1>Shopping cart</h1>
+    <hr>
+    <form id="cart-form" action="/" method="get">
+        <div id="cart-items"></div>
+        <input id="Purchase-button" type="submit" value="Purchase" onclick="purchase(event)">
+    </form>
+    <hr>
+</body>
+</html>
