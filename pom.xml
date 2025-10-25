@@ -67,7 +67,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>net.azurewebsites.amazin_online_bookstore.main</mainClass>
+                    <mainClass>net.azurewebsites.amazin_online_bookstore.AmazinBookstoreApp</mainClass>
                 </configuration>
             </plugin>
         </plugins>
