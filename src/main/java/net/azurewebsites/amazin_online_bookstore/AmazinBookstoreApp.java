@@ -9,5 +9,6 @@ public class AmazinBookstoreApp {
 
     public static void main(String[] args) {
         SpringApplication.run(AmazinBookstoreApp.class, args);
+        
     }
 }
