@@ -14,6 +14,8 @@ target/
 .idea/jarRepositories.xml
 .idea/compiler.xml
 .idea/libraries/
+.idea/dictionaries/project.xml
+.idea/codeStyles/codeStyleConfig.xml
 *.iws
 *.iml
 *.ipr
