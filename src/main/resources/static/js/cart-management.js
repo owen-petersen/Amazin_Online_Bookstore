@@ -106,21 +106,18 @@ async function displayCart() {
 
         itemRemoveButton = document.createElement("button");
         itemRemoveButton.className = "item-remove-button";
-        itemRemoveButton.onclick = function () {
-            console.log("Executing up remove button");
-            removeFromCart(products[i].itemNo);
-        }
-        console.log("Product item No.: ", products[i].itemNo);
         itemRemoveButton.addEventListener("click", () => {
             removeFromCart(products[i].itemNo);
         });
+        itemRemoveButton.type = "button"; // This ensures that the button does not default to submitting to the form
         itemRemoveButton.textContent = "Remove from cart"
 
         item.append(itemImage, itemTitle, itemAuthor, itemPublishingYr, itemNoPages, itemPrice, itemRemoveButton);
         items.appendChild(item);
         console.log(item.outerHTML);
     }
-    cartList.innerHTML = items.outerHTML;
+    cartList.innerHTML = "";
+    cartList.append(items); // Cannot use [cartList.innerHTML = items.outerHTML] because DOM loses the event listeners or added functions since html has to be parsed again.
     return false;
 }
 
