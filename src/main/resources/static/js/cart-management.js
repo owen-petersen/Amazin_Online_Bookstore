@@ -14,7 +14,6 @@ function addToCart(itemNo) {
 
 /**
  * Enables removal of products from the cart.
- * @param event {object} The event from which the function was invoked.
  * @param itemNo {number} The item number of the product.
  * @returns {boolean} Returns false in order to disable form submissions.
  */
@@ -62,27 +61,28 @@ async function getProducts(itemNumbers) {
 }
 
 /**
- * Renders the cart using the cart information from the local storage.
- * @returns {Promise<boolean>} A promise of the resulting modification of the DOM.
+ * Format the product objects returned into the appropriate HTML model.
+ * @param products {Array} The product objects to format.
+ * @returns {HTMLDivElement} The formatted HTML model.
  */
-async function displayCart() {
-    let cartList = document.getElementById("cart-items");
-
-    let items, item, itemImage, itemTitle, itemAuthor, itemPublishingYr, itemNoPages, itemPrice, itemRemoveButton;
+function formatToHTML(products) {
+    let items, item, itemImage, itemDetails, itemTitle, itemAuthor, itemPublishingYr, itemNoPages, itemPrice,
+        itemRemoveButtonBox, itemRemoveButton;
+    let num;
     items = document.createElement("div");
     items.className = "items";
-
-    document.getElementById("cart-items").innerHTML = "hello world!";
-    let products = await getProducts(cart);
-
-    document.getElementById("cart-items").innerHTML = "Second hello world!";
     for (let i = 0; i < cart.length; i++) {
         item = document.createElement("div");
-        item.id = products[i].itemNo;
+        item.id = products[i].id;
         item.className = "item";
 
+        // Item image
         itemImage = document.createElement("div");
-        itemImage.className = "item-image";
+        itemImage.className = "item-picture";
+
+        // Item details
+        itemDetails = document.createElement("div");
+        itemDetails.className = "item-details";
 
         itemTitle = document.createElement("div");
         itemTitle.className = "item-title";
@@ -94,28 +94,49 @@ async function displayCart() {
 
         itemPublishingYr = document.createElement("div");
         itemPublishingYr.className = "item-publishing-year";
-        itemPublishingYr.textContent = "Publishing year: " + products[i].publishingYear;
+        itemPublishingYr.textContent = "Publishing year: " + products[i].publishedYear;
 
         itemNoPages = document.createElement("div");
         itemNoPages.className = "item-no-pages";
-        itemNoPages.textContent = "No. of pages: " + products[i].noPages;
+        itemNoPages.textContent = "No. of pages: " + products[i].numOfPages;
 
         itemPrice = document.createElement("div");
         itemPrice.className = "item-price";
-        itemPrice.textContent = "$" + (products[i].price/100);
+        num = (products[i].price / 100);
+        itemPrice.textContent = "$" + num.toFixed(2);
+
+        itemDetails.append(itemTitle, itemAuthor, itemPublishingYr, itemNoPages, itemPrice);
+
+        // Button
+        itemRemoveButtonBox = document.createElement("div");
+        itemRemoveButtonBox.className = "item-remove-button-box";
 
         itemRemoveButton = document.createElement("button");
         itemRemoveButton.className = "item-remove-button";
         itemRemoveButton.addEventListener("click", () => {
-            removeFromCart(products[i].itemNo);
+            removeFromCart(products[i].id);
         });
         itemRemoveButton.type = "button"; // This ensures that the button does not default to submitting to the form
-        itemRemoveButton.textContent = "Remove from cart"
+        itemRemoveButton.textContent = "Remove from cart";
 
-        item.append(itemImage, itemTitle, itemAuthor, itemPublishingYr, itemNoPages, itemPrice, itemRemoveButton);
+        itemRemoveButtonBox.appendChild(itemRemoveButton);
+
+        item.append(itemImage, itemDetails, itemRemoveButtonBox);
         items.appendChild(item);
-        console.log(item.outerHTML);
     }
+    return items;
+}
+
+/**
+ * Renders the cart using the cart information from the local storage.
+ * @returns {Promise<boolean>} A promise of the resulting modification of the DOM.
+ */
+async function displayCart() {
+    let cartList = document.getElementById("cart-items");
+
+    let products = await getProducts(cart);
+
+    let items = formatToHTML(products);
     cartList.innerHTML = "";
     cartList.append(items); // Cannot use [cartList.innerHTML = items.outerHTML] because DOM loses the event listeners or added functions since html has to be parsed again.
     return false;
