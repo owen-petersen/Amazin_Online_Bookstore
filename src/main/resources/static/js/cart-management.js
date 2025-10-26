@@ -46,8 +46,8 @@ function removeFromCart(itemNo) {
  * @returns {Promise<any>} A promise of the retrieved product.
  */
 function getProduct(itemNo) {
-    console.log("Getting product with id: " + itemNo);
-    let path = productEndpoint + "/" + itemNo;
+    console.log(`Getting product with id: ${itemNo}`);
+    let path = `${productEndpoint}/${itemNo}`;
     return fetch(path).then(response => response.json());
 }
 
@@ -86,24 +86,24 @@ function formatToHTML(products) {
 
         itemTitle = document.createElement("div");
         itemTitle.className = "item-title";
-        itemTitle.textContent = "Title: " + products[i].title;
+        itemTitle.textContent = products[i].title;
 
         itemAuthor = document.createElement("div");
         itemAuthor.className = "item-author";
-        itemAuthor.textContent = "Author: " + products[i].author;
+        itemAuthor.textContent = products[i].author;
 
         itemPublishingYr = document.createElement("div");
         itemPublishingYr.className = "item-publishing-year";
-        itemPublishingYr.textContent = "Publishing year: " + products[i].publishedYear;
+        itemPublishingYr.textContent = `Publishing year: ${products[i].publishedYear}`;
 
         itemNoPages = document.createElement("div");
         itemNoPages.className = "item-no-pages";
-        itemNoPages.textContent = "No. of pages: " + products[i].numOfPages;
+        itemNoPages.textContent = `No. of pages: ${products[i].numOfPages}`;
 
         itemPrice = document.createElement("div");
         itemPrice.className = "item-price";
         num = (products[i].price / 100);
-        itemPrice.textContent = "$" + num.toFixed(2);
+        itemPrice.textContent = `$${num.toFixed(2)}`;
 
         itemDetails.append(itemTitle, itemAuthor, itemPublishingYr, itemNoPages, itemPrice);
 
@@ -135,10 +135,25 @@ async function displayCart() {
     let cartList = document.getElementById("cart-items");
 
     let products = await getProducts(cart);
-
+    let cartItemsNo = document.getElementById("cart-items-no");
+    cartItemsNo.innerText = `(${products.length})`;
     let items = formatToHTML(products);
     cartList.innerHTML = "";
     cartList.append(items); // Cannot use [cartList.innerHTML = items.outerHTML] because DOM loses the event listeners or added functions since html has to be parsed again.
+
+    let productTotal, shipping, tax, estimatedTotal;
+    productTotal = 0;
+    for (let i = 0; i < products.length; i++) {
+        productTotal += products[i].price/100;
+    }
+    shipping = 15;
+    tax = productTotal * 0.13;
+    estimatedTotal = productTotal + shipping + tax;
+
+    document.getElementById("subtotal-value").innerText = `$${productTotal.toFixed(2)}`;
+    document.getElementById("shipping-value").innerText = `$${shipping.toFixed(2)}`;
+    document.getElementById("tax-value").innerText = `$${tax.toFixed(2)}`;
+    document.getElementById("estimated-total-value").innerText = `$${estimatedTotal.toFixed(2)}`;
     return false;
 }
 
