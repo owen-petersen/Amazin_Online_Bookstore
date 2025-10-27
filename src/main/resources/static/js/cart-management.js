@@ -163,6 +163,7 @@ async function displayCart() {
  */
 function purchase(event) {
     event.preventDefault();
+    localStorage.removeItem("cart");
     displayCart().then(() => {});
 }
 

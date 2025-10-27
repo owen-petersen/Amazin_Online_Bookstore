@@ -1,14 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+<th:block th:fragment="head(title)">
+    <meta charset="UTF-8">
+    <title th:text="${title}">Base html containing all the parts that should be on every page.</title>
+    <link rel="stylesheet" href="/css/base-navigation.css">
+</th:block>
 <head>
     <meta charset="UTF-8">
-    <title>Base file containing all the parts that should be on every page.</title>
+    <title>Base html containing all the parts that should be on every page.</title>
+    <link rel="stylesheet" href="/css/base-navigation.css">
 </head>
 <body>
     <header th:fragement="header">
-        <nav>
-            <a href="/">Cart</a>
-        </nav>
+        <div id="base-nav-top-bar">
+            <div id="base-nav-top-bar-container">
+                <div id="base-nav-logo-box"></div>
+                <div id="base-nav-search-bar-box">
+                    <form id="base-nav-search-bar-form" action="/" method="get">
+                        <label for="base-nav-search-bar-input"></label>
+                        <input id="base-nav-search-bar-input" placeholder="Search" type="text" size="100" maxlength="150">
+                    </form>
+                </div>
+                <div id="base-nav-user-section-box">
+                    <div id="base-nav-cart">
+                        <a href="/">
+                            <img id="shopping-cart-img" class="user-section-icon" src="/images/icons/shopping-cart.png" alt="Shopping cart image">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="base-nav-navigation">
+            <nav>
+                <ul id="base-nav-navigation-links">
+                    <li class="base-nav-navigation-link-list-item"><a class="base-nav-navigation-link" href="/"><span>Cart</span></a></li>
+                    <li class="base-nav-navigation-link-list-item base-nav-navigation-separator">|</li>
+                </ul>
+            </nav>
+        </div>
     </header>
+    <footer th:fragment="footer">
+        <div id="base-nav-footer">
+            <div id="base-nav-footer-container">
+                <div id="base-nav-site-links"></div>
+                <div id="base-nav-contact-about-links"></div>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
