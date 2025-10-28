@@ -146,7 +146,7 @@ async function displayCart() {
     for (let i = 0; i < products.length; i++) {
         productTotal += products[i].price/100;
     }
-    shipping = 15;
+    shipping = productTotal > 0? 15 : 0;
     tax = productTotal * 0.13;
     estimatedTotal = productTotal + shipping + tax;
 
@@ -164,6 +164,7 @@ async function displayCart() {
 function purchase(event) {
     event.preventDefault();
     localStorage.removeItem("cart");
+    cart = [];
     displayCart().then(() => {});
 }
 
