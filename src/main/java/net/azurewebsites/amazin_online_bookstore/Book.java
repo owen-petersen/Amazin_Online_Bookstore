@@ -1,53 +1,71 @@
 package net.azurewebsites.amazin_online_bookstore;
 
 import jakarta.persistence.*;
+import org.springframework.stereotype.Component;
 
+@Component
 @Entity
 public class Book {
+
+    // Variables
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+    @GeneratedValue
+    private Integer id;
     private String title;
+    // TODO OP 25-Oct-2025 For now leaving picture as a string but might need to change this one we
+    //  actually get to implementing storing and displaying pictures
+    private String picture;
     private String author;
+    private String isbn;
     private String publisher;
-    @Column(length = 4000)
-    private String description;
-    @Column(unique = true)
-    private String isbn13;
+    private Integer publishedYear;
+    private Integer edition;
     private String genre;
-    private Integer publishingYear;
-    private Integer pages;
-    private String edition;
-    private String pictureUrl;
+    private Integer inventory;
+    private Integer numOfPages;
     private Double price;
-    private Integer inventoryCount;
 
-    // getters & setters
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
-    public String getTitle() { return title; }
-    public void setTitle(String title) { this.title = title; }
-    public String getAuthor() { return author; }
-    public void setAuthor(String author) { this.author = author; }
-    public String getPublisher() { return publisher; }
-    public void setPublisher(String publisher) { this.publisher = publisher; }
-    public String getDescription() { return description; }
-    public void setDescription(String description) { this.description = description; }
-    public String getIsbn13() { return isbn13; }
-    public void setIsbn13(String isbn13) { this.isbn13 = isbn13; }
-    public String getGenre() { return genre; }
-    public void setGenre(String genre) { this.genre = genre; }
-    public Integer getPublishingYear() { return publishingYear; }
-    public void setPublishingYear(Integer publishingYear) { this.publishingYear = publishingYear; }
-    public Integer getPages() { return pages; }
-    public void setPages(Integer pages) { this.pages = pages; }
-    public String getEdition() { return edition; }
-    public void setEdition(String edition) { this.edition = edition; }
-    public String getPictureUrl() { return pictureUrl; }
-    public void setPictureUrl(String pictureUrl) { this.pictureUrl = pictureUrl; }
-    public Double getPrice() { return price; }
-    public void setPrice(Double price) { this.price = price; }
-    public Integer getInventoryCount() { return inventoryCount; }
-    public void setInventoryCount(Integer inventoryCount) { this.inventoryCount = inventoryCount; }
+
+    // Getters and Setters
+
+    public int getId() {return id;}
+
+    public String getTitle() {return title;}
+    public void  setTitle(String title) {this.title = title;}
+
+    public String getPicture() {return picture;}
+    public void setPicture(String picture) {this.picture = picture;}
+
+    public String getAuthor() {return author;}
+    public void setAuthor(String author) {this.author = author;}
+
+    public String getIsbn() {return isbn;}
+    public void setIsbn(String isbn) {this.isbn = isbn;}
+
+    public String getPublisher() {return publisher;}
+    public void setPublisher(String publisher) {this.publisher = publisher;}
+
+    public Integer getPublishedYear() {return publishedYear;}
+    public void setPublishedYear(Integer publishedYear) {this.publishedYear = publishedYear;}
+
+    public Integer getEdition() {return edition;}
+    public void setEdition(Integer edition) {this.edition = edition;}
+
+    public String getGenre() {return genre;}
+    public void setGenre(String genre) {this.genre = genre;}
+
+    public Integer getInventory() {return inventory;}
+    public void setInventory(Integer inventory) {this.inventory = inventory;}
+
+    public Integer getNumOfPages() {return numOfPages;}
+    public void setNumOfPages(Integer numOfPages) {this.numOfPages = numOfPages;}
+
+    public Double getPrice() {return price;}
+    public void setPrice(Double price) {this.price = price;}
+
+
+    // Constructors
+
+    public Book() {}
 }
