@@ -1,7 +1,7 @@
 /** Cart information stored in local storage. */
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 /** The endpoint to retrieve product data */
-let productEndpoint = "/product";
+let productEndpoint = "/product"; // Placeholder until controllers are made.
 
 /**
  * Enables addition of products to the cart.
@@ -47,7 +47,7 @@ function removeFromCart(itemNo) {
  */
 function getProduct(itemNo) {
     console.log(`Getting product with id: ${itemNo}`);
-    let path = `${productEndpoint}/${itemNo}`;
+    let path = `${productEndpoint}/${itemNo}`; // Placeholder until controllers made.
     return fetch(path).then(response => response.json());
 }
 
@@ -102,7 +102,7 @@ function formatToHTML(products) {
 
         itemPrice = document.createElement("div");
         itemPrice.className = "item-price";
-        num = (products[i].price / 100);
+        num = (products[i].price);
         itemPrice.textContent = `$${num.toFixed(2)}`;
 
         itemDetails.append(itemTitle, itemAuthor, itemPublishingYr, itemNoPages, itemPrice);
@@ -144,7 +144,7 @@ async function displayCart() {
     let productTotal, shipping, tax, estimatedTotal;
     productTotal = 0;
     for (let i = 0; i < products.length; i++) {
-        productTotal += products[i].price/100;
+        productTotal += products[i].price;
     }
     shipping = productTotal > 0? 15 : 0;
     tax = productTotal * 0.13;
