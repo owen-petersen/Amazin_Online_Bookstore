@@ -8,21 +8,21 @@ public class DataSeeder implements CommandLineRunner {
     private final BookRepository repo;
     public DataSeeder(BookRepository repo) { this.repo = repo; }
 
-    @Override public void run(String... args) {
+    @Override
+    public void run(String... args) {
         if (repo.count() == 0) {
             Book b = new Book();
-            b.setTitle("Clean Code");
-            b.setAuthor("Robert C. Martin");
-            b.setPublisher("Prentice Hall");
-            b.setDescription("A Handbook of Agile Software Craftsmanship.");
-            b.setIsbn13("9780132350884");
-            b.setGenre("Software");
-            b.setPublishingYear(2008);
-            b.setPages(464);
-            b.setEdition("1st");
-            b.setPictureUrl("https://via.placeholder.com/200x300?text=Clean+Code");
-            b.setPrice(39.99);
-            b.setInventoryCount(7);
+            b.setTitle("The Hobbit");
+            b.setAuthor("J.R.R. Tolkien");
+            b.setPublisher("George Allen & Unwin");
+            b.setIsbn("123456789");                 // was setIsbn13(...)
+            b.setPublishedYear(1937);               // was setPublishingYear(...)
+            b.setEdition(1);                        // Integer, not "1st"
+            b.setGenre("Fantasy");
+            b.setNumOfPages(310);                   // was setPages(...)
+            b.setInventory(3);                      // was setInventoryCount(...)
+            b.setPrice(25.00);                      // Double is fine
+            b.setPicture(null);                     // was setPictureUrl(...), use a URL string if you have one
             repo.save(b);
         }
     }
