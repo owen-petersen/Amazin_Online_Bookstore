@@ -1,7 +1,7 @@
 /** Cart information stored in local storage. */
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 /** The endpoint to retrieve product data */
-let productEndpoint = "/product"; // Placeholder until controllers are made.
+let productEndpoint = "/product"; // TODO: Placeholder until controllers are made. Replace after controllers are implemented
 
 /**
  * Enables addition of products to the cart.
@@ -18,7 +18,6 @@ function addToCart(itemNo) {
  * @returns {boolean} Returns false in order to disable form submissions.
  */
 function removeFromCart(itemNo) {
-    console.log("Entered remove");
     if (cart.length === 0) {
         localStorage.removeItem("cart");
         cart = [];
@@ -31,10 +30,7 @@ function removeFromCart(itemNo) {
     if (itemIdx === -1) {
         return false;
     }
-    console.log("itemIdx: ", itemIdx);
     cart.splice(itemIdx, 1);
-    console.log("Cart after removal: ", cart);
-    console.log(cart);
     localStorage.setItem("cart", JSON.stringify(cart));
     displayCartWrap();
     return false;
@@ -46,8 +42,7 @@ function removeFromCart(itemNo) {
  * @returns {Promise<any>} A promise of the retrieved product.
  */
 function getProduct(itemNo) {
-    console.log(`Getting product with id: ${itemNo}`);
-    let path = `${productEndpoint}/${itemNo}`; // Placeholder until controllers made.
+    let path = `${productEndpoint}/${itemNo}`; // TODO: Placeholder until controllers made. Resolve after controllers implemented
     return fetch(path).then(response => response.json());
 }
 
