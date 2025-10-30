@@ -50,3 +50,8 @@ target/
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
+
+src/main/java/net/azurewebsites/amazin_online_bookstore/PlaceholderApp.java
+src/main/java/net/azurewebsites/amazin_online_bookstore/PlaceholderController.java
+src/main/java/net/azurewebsites/amazin_online_bookstore/PlaceholderController2.java
+src/main/java/net/azurewebsites/amazin_online_bookstore/Product.java
