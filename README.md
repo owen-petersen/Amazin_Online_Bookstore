@@ -51,8 +51,8 @@ It aims to provide the following key features:
 ![](/src/main/resources/project%20diagrams/Book.png)
 ![](/src/main/resources/project%20diagrams/Purchase.png)
 
-## Database Schema Diagram
-
+## Database Schema Diagram 
+![](/src/main/resources/project%20diagrams/Database_schema.png)
 ---
 ## Contributors
 - Faareh Bashir (@Faareh)
