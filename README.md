@@ -1,4 +1,8 @@
 # Amazin Online Bookstore
+[![Java CI with Maven](https://github.com/owen-petersen/Amazin_Online_Bookstore/actions/workflows/maven.yml/badge.svg)](https://github.com/owen-petersen/Amazin_Online_Bookstore/actions/workflows/maven.yml)
+[![Build and deploy JAR app to Azure Web App - amazin-online-bookstore](https://github.com/owen-petersen/Amazin_Online_Bookstore/actions/workflows/main_amazin-online-bookstore.yml/badge.svg)](https://github.com/owen-petersen/Amazin_Online_Bookstore/actions/workflows/main_amazin-online-bookstore.yml)
+---
+**Deployed site link**: https://amazin-online-bookstore.azurewebsites.net/
 
 ---
 ## Project Description
