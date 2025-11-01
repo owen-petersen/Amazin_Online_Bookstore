@@ -43,6 +43,9 @@ It aims to provide the following key features:
 
 ---
 ## UML Diagrams
+![](/src/main/resources/project%20diagrams/Person.png)
+![](/src/main/resources/project%20diagrams/Book.png)
+![](/src/main/resources/project%20diagrams/Purchase.png)
 
 ## Database Schema Diagram
 
