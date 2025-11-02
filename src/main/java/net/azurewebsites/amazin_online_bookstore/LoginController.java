@@ -17,24 +17,27 @@ public class LoginController {
     @Autowired
     private PersonRepository personRepository;
 
-    @GetMapping({"/", "/login"})
+    @GetMapping({"/login"})
     public String showLoginForm() {
         return "login";
     }
 
     @PostMapping("/login")
-    public String processLogin(@RequestParam String username, @RequestParam String password, HttpSession session, RedirectAttributes redirectAttributes) {
+    public String processLogin(@RequestParam String username,
+                               @RequestParam String password,
+                               HttpSession session,
+                               RedirectAttributes ra) {
         Person person = personRepository.findByUsernameAndPassword(username, password);
-
         if (person != null) {
+            session.setAttribute("userId", person.getId());
             session.setAttribute("username", person.getUsername());
-            session.setAttribute("password", person.getPassword());
-            return "redirect:/welcome";
-        }else{
-            redirectAttributes.addFlashAttribute("error","Invalid username or password");
+            return "redirect:/";  // go to home page
+        } else {
+            ra.addFlashAttribute("error", "Invalid username or password");
             return "redirect:/login";
         }
     }
+
 
     @GetMapping("/welcome")
     public String welcome(@SessionAttribute(value = "username", required = false) String username,
@@ -46,6 +49,11 @@ public class LoginController {
         return "welcome";
     }
 
+
+    @GetMapping("/index")
+    public String showIndexPage(Model model) {
+        return "index";
+    }
 
 
     @GetMapping("/logout")

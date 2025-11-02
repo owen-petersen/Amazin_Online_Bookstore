@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html lang="en"
-      xmlns:th="http://www.thymeleaf.org">
-
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Amazin Bookstore</title>
-    <!-- TODO: base-navigation.css will apply header/navigation styling once locally stored cart branch containing it is merged into main -->
-    <link rel="stylesheet" href="/css/base-navigation.css">
-    <link rel="stylesheet" href="/css/home.css"/>
+
+    <!-- Static assets must live under src/main/resources/static/** -->
+    <link rel="stylesheet" th:href="@{/css/base-navigation.css}">
+    <link rel="stylesheet" th:href="@{/css/home.css}">
 </head>
 
 <body>
@@ -15,107 +14,91 @@
     <div id="base-nav-top-bar">
         <div id="base-nav-top-bar-container">
             <div id="base-nav-logo-box">
-                <a href="/" style="text-decoration: none; color: inherit;">
-                    <h1 style="margin: 0; font-size: 1.25rem;">Amazin</h1>
+                <a th:href="@{/}" style="text-decoration:none;color:inherit;">
+                    <h1 style="margin:0;font-size:1.25rem;">Amazin</h1>
                 </a>
             </div>
 
             <div id="base-nav-search-bar-box">
-                <form id="base-nav-search-bar-form" action="/" method="get">
-                    <!-- TODO: Implement search functionality (Milestone 2). -->
-                   <label for="base-nav-search-bar-input" class="visually-hidden">Search</label>
-                   <input id="base-nav-search-bar-input"
-                          placeholder="Search"
-                          type="text"
-                          size="100"
-                          maxlength="150">
-               </form>
-           </div>
+                <form id="base-nav-search-bar-form" th:action="@{/}" method="get">
+                    <!-- TODO: Implement search (Milestone 2). -->
+                    <label for="base-nav-search-bar-input" class="visually-hidden">Search</label>
+                    <input id="base-nav-search-bar-input"
+                           placeholder="Search"
+                           type="text"
+                           size="100"
+                           maxlength="150">
+                </form>
+            </div>
 
-           <div id="base-nav-user-section-box">
-               <div id="base-nav-cart">
-                   <!-- TODO: /cart route will work once we have a CartController -->
-                   <a href="/cart">
-                       <!-- TODO: The shopping-cart.png icon will display correctly once the locally stored cart branch is merged -->
-                       <img id="shopping-cart-img"
-                            class="user-section-icon"
-                            src="/images/icons/shopping-cart.png"
-                            alt="Shopping cart image">
-                   </a>
-               </div>
-           </div>
-       </div>
-   </div>
+            <div id="base-nav-user-section-box">
+                <div id="base-nav-cart">
+                    <a th:href="@{/cart}">
+                        <img id="shopping-cart-img"
+                             class="user-section-icon"
+                             th:src="@{/images/icons/shopping-cart.png}"
+                             alt="Shopping cart image">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 
-   <div id="base-nav-navigation">
-       <nav>
-           <ul id="base-nav-navigation-links">
-               <li class="base-nav-navigation-link-list-item">
-                   <a class="base-nav-navigation-link" href="/cart"><span>Cart</span></a>
-               </li>
-               <li class="base-nav-navigation-link-list-item base-nav-navigation-separator">|</li>
-               <li class="base-nav-navigation-link-list-item">
-                   <a class="base-nav-navigation-link" href="/"><span>Home</span></a>
-               </li>
-           </ul>
-       </nav>
-   </div>
+    <div id="base-nav-navigation">
+        <nav>
+            <ul id="base-nav-navigation-links">
+                <li class="base-nav-navigation-link-list-item">
+                    <a class="base-nav-navigation-link" th:href="@{/cart}"><span>Cart</span></a>
+                </li>
+                <li class="base-nav-navigation-link-list-item base-nav-navigation-separator">|</li>
+                <li class="base-nav-navigation-link-list-item">
+                    <a class="base-nav-navigation-link" th:href="@{/}"><span>Home</span></a>
+                </li>
+            </ul>
+        </nav>
+    </div>
 </header>
 
 <main id="home-content-wrapper">
+    <section id="book-list-section">
+        <h2 class="section-title">Available Books</h2>
 
-   <section id="book-list-section">
-       <h2 class="section-title">Available Books</h2>
-
-       <!-- If no books -->
+        <!-- Empty state -->
         <div th:if="${#lists.isEmpty(books)}" class="book-list-empty">
             <p>No books are available right now.</p>
         </div>
 
-        <!-- If we have books -->
+        <!-- Books list -->
         <ul th:if="${!#lists.isEmpty(books)}" id="book-list">
-            <li class="book-list-item"
-                th:each="book : ${books}">
-                <!-- TODO: Once BookController is merged, these links will correctly open each book's focus page at /book/{id}. -->
+            <li class="book-list-item" th:each="book : ${books}">
+                <!-- Link to /books/{id} -->
                 <a class="book-list-title"
-                   th:href="@{'/books/' + ${book.id}}"
+                   th:href="@{/books/{id}(id=${book.id})}"
                    th:text="${book.title}">
                     Book Title
                 </a>
 
                 <div class="book-list-meta">
-                    <span class="book-list-author"
-                          th:text="${book.author}">Author Name</span>
-
+                    <span class="book-list-author" th:text="${book.author}">Author Name</span>
                     <span class="book-list-separator">|</span>
-
-                    <span class="book-list-genre"
-                          th:text="${book.genre}">Genre</span>
-
+                    <span class="book-list-genre" th:text="${book.genre}">Genre</span>
                     <span class="book-list-separator">|</span>
-
                     <span class="book-list-price">
-                        $<span th:text="${book.price}">0.00</span>
-                    </span>
+            $<span th:text="${#numbers.formatDecimal(book.price, 1, 'NONE', 2, 'POINT')}">0.00</span>
+          </span>
                 </div>
             </li>
         </ul>
     </section>
-
 </main>
 
 <footer th:fragment="footer">
     <div id="base-nav-footer">
         <div id="base-nav-footer-container">
-            <div id="base-nav-site-links">
-                <!-- footer content placeholder -->
-            </div>
-            <div id="base-nav-contact-about-links">
-                <!-- footer content placeholder -->
-            </div>
+            <div id="base-nav-site-links"><!-- footer content placeholder --></div>
+            <div id="base-nav-contact-about-links"><!-- footer content placeholder --></div>
         </div>
     </div>
 </footer>
-
 </body>
 </html>
