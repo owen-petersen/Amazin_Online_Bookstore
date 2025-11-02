@@ -18,10 +18,10 @@ public class TableInitializer implements CommandLineRunner {
     public void run(String... args) throws Exception {
         Person person = new Person();
         person.setEmail("email@email.com");
-        person.setUsername("J0hnSm1th");
+        person.setUsername("faiazahsan");
         person.setPassword("password123");
-        person.setFirstName("John");
-        person.setLastName("Smith");
+        person.setFirstName("Faiaz");
+        person.setLastName("Ahsan");
         personRepository.save(person);
 
         Book book = new Book();
@@ -42,5 +42,8 @@ public class TableInitializer implements CommandLineRunner {
         purchase.setPurchasedBook(book);
         purchase.setQuantity(1);
         purchaseRepository.save(purchase);
+
+        System.out.println("Users in DB: " + personRepository.count());
     }
 }
+
