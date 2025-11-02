@@ -16,11 +16,11 @@ public class BookController {
         this.service = service;
     }
 
-    @GetMapping("/{idOrIsbn}")
-    public String show(@PathVariable String idOrIsbn, Model model) {
-        Book book = service.getByIdOrIsbn(idOrIsbn);
+    @GetMapping("/{id}")
+    public String show(@PathVariable Integer id, Model model) {
+        Book book = service.getById(id);
         if (book == null) return "error/404";
-        model.addAttribute("book", book);
+        model.addAttribute("book", book);               // <— ADD THIS
         model.addAttribute("related", service.findRelatedByAuthor(book, 5));
         return "books/show";
     }
