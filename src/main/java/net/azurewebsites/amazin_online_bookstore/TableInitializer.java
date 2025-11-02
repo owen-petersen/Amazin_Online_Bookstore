@@ -43,7 +43,6 @@ public class TableInitializer implements CommandLineRunner {
         purchase.setQuantity(1);
         purchaseRepository.save(purchase);
 
-        System.out.println("Users in DB: " + personRepository.count());
     }
 }
 
