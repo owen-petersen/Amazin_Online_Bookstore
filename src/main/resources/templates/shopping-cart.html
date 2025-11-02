@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <th:block th:insert="~{base :: head('Shopping cart')}"></th:block>
+    <link rel="stylesheet" href="/css/cart-management.css">
+</head>
+<body>
+    <script src="/js/cart-management.js"></script>
+    <header th:replace="~{base :: header}"></header>
+    <form id="cart-form" action="/" method="get">
+        <div id="shopping-cart-page">
+            <div id="shopping-cart-page-top">
+                <div id="shopping-cart-page-top-container-title">
+                    <div id="cart-title">
+                        My cart <span id="cart-items-no">(0)</span>
+                    </div>
+                </div>
+                <div id="shopping-cart-page-top-container">
+                    <div id="cart-items"></div>
+                    <div id="summary-section">
+                        <div id="summary-title">Order summary</div>
+                        <div id="subtotal" class="summary-data">
+                            <div class="summary-data-label">Subtotal</div>
+                            <div id="subtotal-value" class="summary-data-value">$0.00</div>
+                        </div>
+                        <div id="shipping" class="summary-data">
+                            <div class="summary-data-label">Shipping</div>
+                            <div id="shipping-value" class="summary-data-value">$0.00</div>
+                        </div>
+                        <div id="tax" class="summary-data">
+                            <div class="summary-data-label">Tax</div>
+                            <div id="tax-value" class="summary-data-value">$0.00</div>
+                        </div>
+                        <hr id="summary-section-line">
+                        <div id="estimated-total" class="summary-data">
+                            <div id="estimated-total-label" class="summary-data-label">Estimated total</div>
+                            <div id="estimated-total-value" class="summary-data-value">$0.00</div>
+                        </div>
+                        <div id="purchase-button-surround">
+                            <input id="purchase-button" type="submit" value="Purchase" onclick="purchase(event)">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="shopping-cart-page-bottom">
+                <div id="recommendations"></div>
+            </div>
+        </div>
+    </form>
+    <hr>
+</body>
+</html>
