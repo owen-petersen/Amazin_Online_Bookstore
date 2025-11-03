@@ -23,20 +23,23 @@ public class LoginController {
     }
 
     @PostMapping("/login")
-    public String processLogin(@RequestParam String username,
-                               @RequestParam String password,
-                               HttpSession session,
-                               RedirectAttributes ra) {
+    public String processLogin(
+            @RequestParam("username") String username,
+            @RequestParam("password") String password,
+            HttpSession session,
+            RedirectAttributes redirectAttributes) {
+
         Person person = personRepository.findByUsernameAndPassword(username, password);
         if (person != null) {
             session.setAttribute("userId", person.getId());
             session.setAttribute("username", person.getUsername());
-            return "redirect:/";  // go to home page
+            return "redirect:/index";
         } else {
-            ra.addFlashAttribute("error", "Invalid username or password");
+            redirectAttributes.addFlashAttribute("error", "Invalid username or password");
             return "redirect:/login";
         }
     }
+
 
 
     @GetMapping("/welcome")
