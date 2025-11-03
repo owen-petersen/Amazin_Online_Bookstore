@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title th:text="${book.title}">Book</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <style>
+        body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 2rem; line-height: 1.5; }
+        .title { font-size: 2.25rem; font-weight: 700; margin-bottom: .25rem; }
+        .author { font-size: 1.25rem; font-weight: 600; color: #333; margin-bottom: 1rem; }
+        .meta { margin: .25rem 0; }
+        .label { color:#555; }
+    </style>
+    <link rel="stylesheet" href="/css/base-navigation.css">
+    <link rel="stylesheet" href="/css/cart-management.css">
+</head>
+<body>
+<script src="/js/cart-management.js"></script>
+<header th:replace="~{base :: header}"></header>
+<div>
+    <div class="title" th:text="${book.title}">Title</div>
+    <div class="author" th:text="${book.author}">Author</div>
+
+    <p class="meta"><span class="label">Publisher:</span> <span th:text="${book.publisher}">Publisher</span></p>
+    <p class="meta"><span class="label">ISBN:</span> <span th:text="${book.isbn}">ISBN</span></p>
+    <p class="meta"><span class="label">Published Year:</span> <span th:text="${book.publishedYear}">Year</span></p>
+    <p class="meta"><span class="label">Edition:</span> <span th:text="${book.edition}">1</span></p>
+    <p class="meta"><span class="label">Genre:</span> <span th:text="${book.genre}">Genre</span></p>
+    <p class="meta"><span class="label">Pages:</span> <span th:text="${book.numOfPages}">0</span></p>
+    <p class="meta"><span class="label">In Stock:</span> <span th:text="${book.inventory}">0</span></p>
+    <p class="meta"><span class="label">Price:</span> $<span th:text="${#numbers.formatDecimal(book.price, 1, 'COMMA', 2, 'POINT')}">0.00</span></p>
+    <p class="meta"><button class="item-remove-button" th:onclick="'addToCart(' + ${book.id} + ')'">Add to cart</button></p>
+
+
+    <div th:if="${book.picture}">
+        <img th:src="${book.picture}" alt="Book cover" style="margin-top:1rem; max-width:200px;">
+    </div>
+</div>
+</body>
+</html>
