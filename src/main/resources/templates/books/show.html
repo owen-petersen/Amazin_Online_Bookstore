@@ -11,8 +11,12 @@
         .meta { margin: .25rem 0; }
         .label { color:#555; }
     </style>
+    <link rel="stylesheet" href="/css/base-navigation.css">
+    <link rel="stylesheet" href="/css/cart-management.css">
 </head>
 <body>
+<script src="/js/cart-management.js"></script>
+<header th:replace="~{base :: header}"></header>
 <div>
     <div class="title" th:text="${book.title}">Title</div>
     <div class="author" th:text="${book.author}">Author</div>
@@ -25,6 +29,8 @@
     <p class="meta"><span class="label">Pages:</span> <span th:text="${book.numOfPages}">0</span></p>
     <p class="meta"><span class="label">In Stock:</span> <span th:text="${book.inventory}">0</span></p>
     <p class="meta"><span class="label">Price:</span> $<span th:text="${#numbers.formatDecimal(book.price, 1, 'COMMA', 2, 'POINT')}">0.00</span></p>
+    <p class="meta"><button class="item-remove-button" th:onclick="'addToCart(' + ${book.id} + ')'">Add to cart</button></p>
+
 
     <div th:if="${book.picture}">
         <img th:src="${book.picture}" alt="Book cover" style="margin-top:1rem; max-width:200px;">

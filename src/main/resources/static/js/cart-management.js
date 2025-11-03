@@ -1,7 +1,7 @@
 /** Cart information stored in local storage. */
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 /** The endpoint to retrieve product data */
-let productEndpoint = "/books"; // TODO MA-O 30-Oct-2025: Placeholder until controllers are made. Replace after controllers are implemented
+let productEndpoint = "/internal/books";
 
 /**
  * Enables addition of products to the cart.
@@ -43,7 +43,7 @@ function removeFromCart(itemNo) {
  * @returns {Promise<any>} A promise of the retrieved product.
  */
 function getProduct(itemNo) {
-    let path = `${productEndpoint}/${itemNo}`; // TODO MA-O 30-Oct-2025: Placeholder until controllers made. Resolve after controllers implemented
+    let path = `${productEndpoint}/${itemNo}`;
     return fetch(path).then(response => response.json());
 }
 
@@ -132,11 +132,9 @@ async function displayCart() {
 
     let products = await getProducts(cart);
     let cartItemsNo = document.getElementById("cart-items-no");
-    if (products != null) {
-        cartItemsNo.innerText = `(${products.length})`;
-    } else {
-        cartItemsNo.innerText = "(0)";
-    }
+
+    cartItemsNo.innerText = `(${products.length})`;
+
     let items = formatToHTML(products);
     cartList.innerHTML = "";
     cartList.append(items); // Cannot use [cartList.innerHTML = items.outerHTML] because DOM loses the event listeners or added functions since html has to be parsed again.

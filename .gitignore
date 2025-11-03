@@ -56,3 +56,5 @@ src/main/java/net/azurewebsites/amazin_online_bookstore/PlaceholderApp.java
 src/main/java/net/azurewebsites/amazin_online_bookstore/PlaceholderController.java
 src/main/java/net/azurewebsites/amazin_online_bookstore/PlaceholderController2.java
 src/main/java/net/azurewebsites/amazin_online_bookstore/Product.java
+
+src/main/resources/github.css
