@@ -3,7 +3,6 @@ package net.azurewebsites.amazin_online_bookstore;
 import jakarta.persistence.*;
 import org.springframework.stereotype.Component;
 
-@Component
 @Entity
 public class Purchase {
 
