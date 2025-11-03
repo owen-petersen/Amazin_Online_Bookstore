@@ -7,6 +7,7 @@
     <title>Amazin Bookstore</title>
     <!-- TODO: base-navigation.css will apply header/navigation styling once locally stored cart branch containing it is merged into main -->
     <link rel="stylesheet" href="/css/base-navigation.css">
+    <link rel="stylesheet" href="/css/cart-management.css">
     <link rel="stylesheet" href="/css/home.css"/>
 </head>
 
@@ -63,7 +64,7 @@
 </header>
 
 <main id="home-content-wrapper">
-
+    <script src="/js/cart-management.js"></script>
    <section id="book-list-section">
        <h2 class="section-title">Available Books</h2>
 
@@ -96,6 +97,12 @@
 
                     <span class="book-list-price">
                         $<span th:text="${book.price}">0.00</span>
+                    </span>
+
+                    <span class="book-list-separator">|</span>
+
+                    <span class="book-list-add-button">
+                        <button class="item-remove-button" th:onclick="'addToCart(' + ${book.id} + ')'">Add to cart</button>
                     </span>
                 </div>
             </li>
