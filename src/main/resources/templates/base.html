@@ -14,11 +14,15 @@
     <header th:fragement="header">
         <div id="base-nav-top-bar">
             <div id="base-nav-top-bar-container">
-                <div id="base-nav-logo-box"></div>
+                <div id="base-nav-logo-box">
+                    <a href="/" style="text-decoration: none; color: inherit;">
+                        <h1 style="margin: 0; font-size: 1.25rem;">Amazin</h1>
+                    </a>
+                </div>
                 <div id="base-nav-search-bar-box">
                     <form id="base-nav-search-bar-form" action="/" method="get">
-                        <label for="base-nav-search-bar-input"></label>
-                        <input id="base-nav-search-bar-input" placeholder="Search" type="text" size="100" maxlength="150">
+                        <label for="base-nav-search-bar-input" hidden></label>
+                        <input id="base-nav-search-bar-input" placeholder="Search" type="text" size="100" maxlength="150" hidden>
                     </form>
                 </div>
                 <div id="base-nav-user-section-box">
@@ -33,8 +37,9 @@
         <div id="base-nav-navigation">
             <nav>
                 <ul id="base-nav-navigation-links">
-                    <li class="base-nav-navigation-link-list-item"><a class="base-nav-navigation-link" href="/"><span>Cart</span></a></li>
+                    <li class="base-nav-navigation-link-list-item"><a class="base-nav-navigation-link" href="/cart"><span>Cart</span></a></li>
                     <li class="base-nav-navigation-link-list-item base-nav-navigation-separator">|</li>
+                    <li class="base-nav-navigation-link-list-item"><a class="base-nav-navigation-link" href="/"><span>Home</span></a></li>
                 </ul>
             </nav>
         </div>

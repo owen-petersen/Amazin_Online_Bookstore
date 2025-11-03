@@ -7,6 +7,7 @@
     <title>Amazin Bookstore</title>
     <!-- TODO: base-navigation.css will apply header/navigation styling once locally stored cart branch containing it is merged into main -->
     <link rel="stylesheet" href="/css/base-navigation.css">
+    <link rel="stylesheet" href="/css/cart-management.css">
     <link rel="stylesheet" href="/css/home.css"/>
 </head>
 
@@ -23,12 +24,13 @@
             <div id="base-nav-search-bar-box">
                 <form id="base-nav-search-bar-form" action="/" method="get">
                     <!-- TODO: Implement search functionality (Milestone 2). -->
-                   <label for="base-nav-search-bar-input" class="visually-hidden">Search</label>
+                   <label for="base-nav-search-bar-input" class="visually-hidden" hidden>Search</label>
                    <input id="base-nav-search-bar-input"
                           placeholder="Search"
                           type="text"
                           size="100"
-                          maxlength="150">
+                          maxlength="150"
+                          hidden>
                </form>
            </div>
 
@@ -63,7 +65,7 @@
 </header>
 
 <main id="home-content-wrapper">
-
+    <script src="/js/cart-management.js"></script>
    <section id="book-list-section">
        <h2 class="section-title">Available Books</h2>
 
@@ -96,6 +98,12 @@
 
                     <span class="book-list-price">
                         $<span th:text="${book.price}">0.00</span>
+                    </span>
+
+                    <span class="book-list-separator">|</span>
+
+                    <span class="book-list-add-button">
+                        <button class="item-remove-button" th:onclick="'addToCart(' + ${book.id} + ')'">Add to cart</button>
                     </span>
                 </div>
             </li>
