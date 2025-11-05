@@ -122,7 +122,7 @@ function formatToHTML(products) {
         itemRemoveButtonBox.className = "item-remove-button-box";
 
         itemRemoveButton = document.createElement("button");
-        itemRemoveButton.className = "item-remove-button";
+        itemRemoveButton.className = "cart-management-button";
         itemRemoveButton.addEventListener("click", () => {
             removeFromCart(products[i].id);
         });

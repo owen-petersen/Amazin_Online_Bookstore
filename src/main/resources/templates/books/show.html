@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8" />
-    <title th:text="${book.title}">Book</title>
 <!--    <meta name="viewport" content="width=device-width,initial-scale=1" />-->
+<!--    <meta charset="UTF-8" />-->
+<!--    <title th:text="${book.title}">Book</title>-->
+<!--    <link rel="stylesheet" href="/css/base-navigation.css">-->
+<!--    <link rel="stylesheet" href="/css/global.css">-->
+    <th:block th:replace="~{base :: head(${book.title})}"></th:block>
     <style>
         body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
         .title { font-size: 2.25rem; font-weight: 700; margin-bottom: .25rem; }
@@ -11,8 +14,6 @@
         .meta { margin: .25rem 0; }
         .label { color:#555; }
     </style>
-    <link rel="stylesheet" href="/css/base-navigation.css">
-    <link rel="stylesheet" href="/css/cart-management.css">
 </head>
 <body>
 <script src="/js/cart-management.js"></script>
@@ -29,7 +30,7 @@
     <p class="meta"><span class="label">Pages:</span> <span th:text="${book.numOfPages}">0</span></p>
     <p class="meta"><span class="label">In Stock:</span> <span th:text="${book.inventory}">0</span></p>
     <p class="meta"><span class="label">Price:</span> $<span th:text="${#numbers.formatDecimal(book.price, 1, 'COMMA', 2, 'POINT')}">0.00</span></p>
-    <p class="meta"><button class="item-remove-button" th:onclick="'addToCart(' + ${book.id} + ')'">Add to cart</button></p>
+    <p class="meta"><button class="cart-management-button" th:onclick="'addToCart(' + ${book.id} + ')'">Add to cart</button></p>
 
 
     <div th:if="${book.picture}">
