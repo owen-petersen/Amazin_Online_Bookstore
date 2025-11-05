@@ -1,5 +1,7 @@
 package net.azurewebsites.amazin_online_bookstore.datatransferobj;
 
+import net.azurewebsites.amazin_online_bookstore.service.BookService;
+
 /**
  * The OrderPricingSummary class is a data object that compiles pricing information for an order.
  * An order can be one item or a list of items.
@@ -12,6 +14,16 @@ public class OrderPricingSummary {
     private Double tax;
     private Double shipping;
     private Double orderTotal;
+
+    /**
+     * Default constructor.
+     */
+    public OrderPricingSummary() {
+        this.itemsTotal = 0.0d;
+        this.tax = 0.0d;
+        this.shipping = 0.0d;
+        this.orderTotal = 0.0d;
+    }
 
     /**
      * Constructor for the OrderPricingSummary class.
