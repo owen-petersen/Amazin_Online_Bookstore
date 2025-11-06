@@ -1,6 +1,5 @@
-package net.azurewebsites.amazin_online_bookstore;
+package net.azurewebsites.amazin_online_bookstore.entity;
 
-import net.azurewebsites.amazin_online_bookstore.entity.Book;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 

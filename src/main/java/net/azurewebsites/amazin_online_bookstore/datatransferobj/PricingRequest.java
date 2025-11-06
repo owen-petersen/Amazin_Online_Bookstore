@@ -1,5 +1,6 @@
 package net.azurewebsites.amazin_online_bookstore.datatransferobj;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -11,7 +12,9 @@ import java.util.List;
 public class PricingRequest {
     private List<Integer> itemIds;
 
-    public  PricingRequest() {}
+    public  PricingRequest() {
+        this.itemIds = new ArrayList<>();
+    }
 
     public List<Integer> getItemIds() {
         return itemIds;
