@@ -8,6 +8,36 @@
     <header th:replace="~{base :: header}"></header>
     <main>
         <form id="checkout-form" action="/checkout/purchase" method="post">
+            <div id="checkout-shipping">
+                <div id="checkout-shipping-title">
+                    <h1>Shipping</h1>
+                </div>
+                <div id="checkout-shipping-contact-information">
+                    <div id="checkout-shipping-contact-information-title">Contact information</div>
+                    <div id="checkout-shipping-contact-information-info">
+                        <div id="checkout-shipping-contact-information-email">Email</div>
+                        <div id="checkout-shipping-contact-information-phone">Phone</div>
+                    </div>
+                </div>
+                <div id="checkout-shipping-address">
+                    <div id="checkout-shipping-address-title">Address</div>
+                    <div id="checkout-shipping-address-name">
+                        <div id="checkout-shipping-address-firstname">Firstname</div>
+                        <div id="checkout-shipping-address-lastname">Lastname</div>
+                    </div>
+                    <div id="checkout-shipping-address-address-line1">Address line 1</div>
+                    <div id="checkout-shipping-address-address-line2">Address line 2</div>
+                    <div id="checkout-shipping-address-country">
+                        <div id="checkout-shipping-address-country-name">Country</div>
+                        <div id="checkout-shipping-address-country-province">Province</div>
+                    </div>
+                    <div id="checkout-shipping-address-city">
+                        <div id="checkout-shipping-address-city-name">City</div>
+                        <div id="checkout-shipping-address-city-postal-code">Postal code</div>
+                    </div>
+                </div>
+            </div>
+            <div id="checkout-payment-info"></div>
             <div id="summary-section">
                 <div id="summary-title">Order summary</div>
                 <div id="subtotal" class="summary-data">
@@ -31,6 +61,7 @@
                     <input id="purchase-button" type="submit" value="Purchase">
                 </div>
             </div>
+            <div id="checkout-cart-summary"></div>
         </form>
     </main>
     <footer th:replace="~{base :: footer}"></footer>
