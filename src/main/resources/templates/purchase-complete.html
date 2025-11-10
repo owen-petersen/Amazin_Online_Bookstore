@@ -7,7 +7,14 @@
     <header th:replace="~{base :: header}"></header>
 
     <main>
-        You completed your purchase.
+        <form action="/" method="get">
+            <div style="display: flex; justify-content: center; align-items: center; padding-top: 200px">
+                <strong>You completed your purchase.</strong>
+            </div>
+            <div style="display: flex; justify-content: center; align-items: center; padding-top: 30px">
+                <button type="submit" value="Go to homepage" formaction="/">Go to home page</button>
+            </div>
+        </form>
     </main>
 
     <footer th:replace="~{base :: footer}"></footer>

@@ -8,60 +8,95 @@
     <header th:replace="~{base :: header}"></header>
     <main>
         <form id="checkout-form" action="/checkout/purchase" method="post">
-            <div id="checkout-shipping">
-                <div id="checkout-shipping-title">
-                    <h1>Shipping</h1>
+            <div id="checkout-page-container">
+                <div id="checkout-shipping-info-container">
+                    <div id="checkout-shipping">
+                        <div id="checkout-shipping-title">
+                            <h1>Shipping</h1>
+                        </div>
+                        <div id="checkout-shipping-contact-information">
+                            <div id="checkout-shipping-contact-information-title" class="checkout-section-title">Contact information</div>
+                            <div id="checkout-shipping-contact-information-info">
+                                <div id="checkout-shipping-contact-information-email" class="checkout-shipping-share-row">
+                                    <label for="email" class="shipping-info-label">Email</label><br>
+                                    <input id="email" type="text" class="shipping-info-text-field">
+                                </div>
+                                <div id="checkout-shipping-contact-information-phone" class="checkout-shipping-share-row">
+                                    <label for="phone" class="shipping-info-label">Phone</label><br>
+                                    <input id="phone" type="text" class="shipping-info-text-field">
+                                </div>
+                            </div>
+                        </div>
+                        <div id="checkout-shipping-address">
+                            <div id="checkout-shipping-address-title" class="checkout-section-title">Address</div>
+                            <div id="checkout-shipping-address-name">
+                                <div id="checkout-shipping-address-firstname" class="checkout-shipping-share-row">
+                                    <label for="firstname" class="shipping-info-label">Firstname</label><br>
+                                    <input id="firstname" type="text" class="shipping-info-text-field">
+                                </div>
+                                <div id="checkout-shipping-address-lastname" class="checkout-shipping-share-row">
+                                    <label for="lastname" class="shipping-info-label">Lastname</label><br>
+                                    <input id="lastname" type="text" class="shipping-info-text-field">
+                                </div>
+                            </div>
+                            <div id="checkout-shipping-address-address-line1">
+                                <label for="address-line-1" class="shipping-info-label">Address line 1</label><br>
+                                <input id="address-line-1" type="text" class="shipping-info-text-field">
+                            </div>
+                            <div id="checkout-shipping-address-address-line2">
+                                <label for="address-line-2" class="shipping-info-label">Address line 2</label><br>
+                                <input id="address-line-2" type="text" class="shipping-info-text-field">
+                            </div>
+                            <div id="checkout-shipping-address-country">
+                                <div id="checkout-shipping-address-country-name" class="checkout-shipping-share-row">
+                                    <label for="country" class="shipping-info-label">Country</label><br>
+                                    <input id="country" type="text" class="shipping-info-text-field">
+                                </div>
+                                <div id="checkout-shipping-address-country-province" class="checkout-shipping-share-row">
+                                    <label for="province" class="shipping-info-label">Province</label><br>
+                                    <input id="province" type="text" class="shipping-info-text-field"></div>
+                            </div>
+                            <div id="checkout-shipping-address-city">
+                                <div id="checkout-shipping-address-city-name" class="checkout-shipping-share-row">
+                                    <label for="city" class="shipping-info-label">City</label><br>
+                                    <input id="city" type="text" class="shipping-info-text-field">
+                                </div>
+                                <div id="checkout-shipping-address-city-postal-code" class="checkout-shipping-share-row">
+                                    <label for="postal-code" class="shipping-info-label">Postal code</label><br>
+                                    <input id="postal-code" type="text" class="shipping-info-text-field">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="checkout-payment-info"></div>
                 </div>
-                <div id="checkout-shipping-contact-information">
-                    <div id="checkout-shipping-contact-information-title">Contact information</div>
-                    <div id="checkout-shipping-contact-information-info">
-                        <div id="checkout-shipping-contact-information-email">Email</div>
-                        <div id="checkout-shipping-contact-information-phone">Phone</div>
+                <div id="checkout-summary-info-container">
+                    <div id="summary-section">
+                        <div id="summary-title">Order summary</div>
+                        <div id="subtotal" class="summary-data">
+                            <div class="summary-data-label">Subtotal</div>
+                            <div id="subtotal-value" class="summary-data-value">$0.00</div>
+                        </div>
+                        <div id="shipping" class="summary-data">
+                            <div class="summary-data-label">Shipping</div>
+                            <div id="shipping-value" class="summary-data-value">$0.00</div>
+                        </div>
+                        <div id="tax" class="summary-data">
+                            <div class="summary-data-label">Tax</div>
+                            <div id="tax-value" class="summary-data-value">$0.00</div>
+                        </div>
+                        <hr id="summary-section-line">
+                        <div id="estimated-total" class="summary-data">
+                            <div id="estimated-total-label" class="summary-data-label">Estimated total</div>
+                            <div id="estimated-total-value" class="summary-data-value">$0.00</div>
+                        </div>
+                        <div id="purchase-button-surround">
+                            <input id="purchase-button" type="submit" value="Purchase">
+                        </div>
                     </div>
-                </div>
-                <div id="checkout-shipping-address">
-                    <div id="checkout-shipping-address-title">Address</div>
-                    <div id="checkout-shipping-address-name">
-                        <div id="checkout-shipping-address-firstname">Firstname</div>
-                        <div id="checkout-shipping-address-lastname">Lastname</div>
-                    </div>
-                    <div id="checkout-shipping-address-address-line1">Address line 1</div>
-                    <div id="checkout-shipping-address-address-line2">Address line 2</div>
-                    <div id="checkout-shipping-address-country">
-                        <div id="checkout-shipping-address-country-name">Country</div>
-                        <div id="checkout-shipping-address-country-province">Province</div>
-                    </div>
-                    <div id="checkout-shipping-address-city">
-                        <div id="checkout-shipping-address-city-name">City</div>
-                        <div id="checkout-shipping-address-city-postal-code">Postal code</div>
-                    </div>
+                    <div id="checkout-cart-summary"></div>
                 </div>
             </div>
-            <div id="checkout-payment-info"></div>
-            <div id="summary-section">
-                <div id="summary-title">Order summary</div>
-                <div id="subtotal" class="summary-data">
-                    <div class="summary-data-label">Subtotal</div>
-                    <div id="subtotal-value" class="summary-data-value">$0.00</div>
-                </div>
-                <div id="shipping" class="summary-data">
-                    <div class="summary-data-label">Shipping</div>
-                    <div id="shipping-value" class="summary-data-value">$0.00</div>
-                </div>
-                <div id="tax" class="summary-data">
-                    <div class="summary-data-label">Tax</div>
-                    <div id="tax-value" class="summary-data-value">$0.00</div>
-                </div>
-                <hr id="summary-section-line">
-                <div id="estimated-total" class="summary-data">
-                    <div id="estimated-total-label" class="summary-data-label">Estimated total</div>
-                    <div id="estimated-total-value" class="summary-data-value">$0.00</div>
-                </div>
-                <div id="purchase-button-surround">
-                    <input id="purchase-button" type="submit" value="Purchase">
-                </div>
-            </div>
-            <div id="checkout-cart-summary"></div>
         </form>
     </main>
     <footer th:replace="~{base :: footer}"></footer>
