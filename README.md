@@ -44,6 +44,26 @@ It aims to provide the following key features:
   - Allow adding and removing books from inventory
   - Add roles for users
   - Display book pictures on UI
+#### Nov 17, 2025
+- No Status
+  - Refactor code for supporting user sessions
+  - Display book pictures on UI
+- Todo
+  - Add roles for users
+  - Allow adding and removing books from inventory
+  - Allow user to search/filter list of books
+  - Add reference to Person in each Purchase
+- In Progress
+  - Implement checkout page
+- Done
+  - Create user log-in
+  - Create item checkout cart
+  - Create main web pages
+  - Create readme file
+  - Create CrudRepository classes for all tables
+  - Create focus web page for each book
+- Plan for next spring
+  - TBD
 
 ---
 ## UML Diagrams
@@ -58,5 +78,5 @@ It aims to provide the following key features:
 - Faareh Bashir (@Faareh)
 - Faiaz Ahsan (@faiazahsan)
 - Mahmoud Chaaban (@Ma7vx)
-- Marvel Adotse-Ogah (@Marvel1754)
+- Marvel Adotse-Ogah (@marvel-ao)
 - Owen Petersen (@owen-petersen)
