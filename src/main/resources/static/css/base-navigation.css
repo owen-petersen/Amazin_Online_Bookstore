@@ -1,15 +1,18 @@
 body {
     font-family: "Verdana", serif;
 }
-
+header {
+    position: sticky;
+    top: 0;
+    background-color: white;
+}
 #base-nav-top-bar {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: sticky;
     border-bottom: 1px solid #bbbbbb;
-    padding-bottom: 40px;
+    padding-bottom: 10px;
 }
 
 #base-nav-top-bar-container {
@@ -62,8 +65,11 @@ body {
 }
 
 #base-nav-navigation-links {
-    display: flex;
-    flex-direction: row;
+    /*display: flex;*/
+    /*flex-direction: row;*/
+    display: grid;
+    grid-auto-columns: 100px;
+    grid-auto-flow: column;
     align-items: flex-start;
     background-color: #222222;
     margin: 0 0 0 0;
@@ -76,7 +82,7 @@ body {
 /*}*/
 
 .base-nav-navigation-link-list-item {
-    list-style-type: none;
+    width: 100%;
 }
 
 .base-nav-navigation-link, .base-nav-navigation-separator {
