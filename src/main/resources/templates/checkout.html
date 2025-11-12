@@ -16,7 +16,7 @@
                         </div>
                         <div id="checkout-shipping-contact-information">
                             <div id="checkout-shipping-contact-information-title" class="checkout-section-title">Contact information</div>
-                            <div id="checkout-shipping-contact-information-info">
+                            <div id="checkout-shipping-contact-information-info" class="checkout-shipping-section">
                                 <div id="checkout-shipping-contact-information-email" class="checkout-shipping-share-row">
                                     <label for="email" class="shipping-info-label">Email</label><br>
                                     <input id="email" type="text" class="shipping-info-text-field">
@@ -29,7 +29,7 @@
                         </div>
                         <div id="checkout-shipping-address">
                             <div id="checkout-shipping-address-title" class="checkout-section-title">Address</div>
-                            <div id="checkout-shipping-address-name">
+                            <div id="checkout-shipping-address-name" class="checkout-shipping-section">
                                 <div id="checkout-shipping-address-firstname" class="checkout-shipping-share-row">
                                     <label for="firstname" class="shipping-info-label">Firstname</label><br>
                                     <input id="firstname" type="text" class="shipping-info-text-field">
@@ -39,15 +39,15 @@
                                     <input id="lastname" type="text" class="shipping-info-text-field">
                                 </div>
                             </div>
-                            <div id="checkout-shipping-address-address-line1">
+                            <div id="checkout-shipping-address-address-line1" class="checkout-shipping-section">
                                 <label for="address-line-1" class="shipping-info-label">Address line 1</label><br>
                                 <input id="address-line-1" type="text" class="shipping-info-text-field">
                             </div>
-                            <div id="checkout-shipping-address-address-line2">
+                            <div id="checkout-shipping-address-address-line2" class="checkout-shipping-section">
                                 <label for="address-line-2" class="shipping-info-label">Address line 2</label><br>
                                 <input id="address-line-2" type="text" class="shipping-info-text-field">
                             </div>
-                            <div id="checkout-shipping-address-country">
+                            <div id="checkout-shipping-address-country" class="checkout-shipping-section">
                                 <div id="checkout-shipping-address-country-name" class="checkout-shipping-share-row">
                                     <label for="country" class="shipping-info-label">Country</label><br>
                                     <input id="country" type="text" class="shipping-info-text-field">
@@ -56,7 +56,7 @@
                                     <label for="province" class="shipping-info-label">Province</label><br>
                                     <input id="province" type="text" class="shipping-info-text-field"></div>
                             </div>
-                            <div id="checkout-shipping-address-city">
+                            <div id="checkout-shipping-address-city" class="checkout-shipping-section">
                                 <div id="checkout-shipping-address-city-name" class="checkout-shipping-share-row">
                                     <label for="city" class="shipping-info-label">City</label><br>
                                     <input id="city" type="text" class="shipping-info-text-field">
@@ -68,7 +68,26 @@
                             </div>
                         </div>
                     </div>
-                    <div id="checkout-payment-info"></div>
+                    <hr style="height: 2px; width: 500px; background-color: #999999; margin: 20px 5px">
+                    <div id="checkout-payment-info">
+                        <div id="checkout-payment-info-title" class="checkout-section-title">Payment</div>
+                        <div id="checkout-payment-info-name" class="checkout-shipping-section">
+                            <label for="name-on-card" class="shipping-info-label">Name on Card <span class="required-tag">(required)</span></label><br>
+                            <input id="name-on-card" type="text" class="shipping-info-text-field">
+                        </div>
+                        <div id="checkout-payment-info-card-number" class="checkout-shipping-section">
+                            <label for="card-number" class="shipping-info-label">Card Number <span class="required-tag">(required)</span></label><br>
+                            <input id="card-number" type="text" class="shipping-info-text-field">
+                        </div>
+                        <div id="checkout-payment-info-expiry-date" class="checkout-shipping-section">
+                            <label for="expiry-date" class="shipping-info-label">Expiry date(MMYY) <span class="required-tag">(required)</span></label><br>
+                            <input id="expiry-date" type="text" class="shipping-info-text-field">
+                        </div>
+                        <div id="checkout-payment-info-cvv-cvc" class="checkout-shipping-section">
+                            <label for="cvv-cvc" class="shipping-info-label">CVV/CVC <span class="required-tag">(required)</span></label><br>
+                            <input id="cvv-cvc" type="text" class="shipping-info-text-field">
+                        </div>
+                    </div>
                 </div>
                 <div id="checkout-summary-info-container">
                     <div id="summary-section">

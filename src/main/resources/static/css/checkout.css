@@ -5,8 +5,9 @@
     flex-direction: row;
     flex: 2;
     justify-content: center;
-    align-items: center;
-    height: 600px;
+    align-items: flex-start;
+    align-content: flex-start;
+    height: 1500px;
 }
 
 .checkout-section-title {
@@ -17,15 +18,14 @@
 #checkout-shipping-info-container {
     display: flex;
     flex-direction: column;
-    flex: 2;
-    min-width: 800px;
+    flex: 1;
+    min-width: 500px;
     max-width: 800px;
     justify-content: center;
     align-items: center;
-    padding-top: 40px;
 }
 
-#checkout-shipping {
+#checkout-shipping, #checkout-payment-info {
     min-width: 500px;
 }
 
@@ -48,14 +48,18 @@
 .shipping-info-text-field:focus, .shipping-info-text-field:hover {
     border-color: #111111;
     border-width: 2px;
+    margin-top: -1px;
+    margin-bottom: -1px;
 }
 
 #checkout-summary-info-container {
     display: flex;
     flex-direction: column;
     flex: 1;
+    box-sizing: border-box;
     justify-content: center;
     align-items: center;
+    max-width: 400px;
 }
 
 #checkout-shipping-contact-information-info {
@@ -84,4 +88,8 @@
 
 .checkout-shipping-share-row {
     width: 50%;
+}
+
+.checkout-shipping-section {
+    padding-top: 20px;
 }
