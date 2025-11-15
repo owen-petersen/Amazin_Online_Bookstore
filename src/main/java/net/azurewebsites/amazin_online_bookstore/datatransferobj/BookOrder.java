@@ -4,15 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * The PricingRequest class is an object representation for pricing requests from the client.
+ * The BookOrder class is an object representation for pricing requests from the client.
  *
  * @author Marvel Adotse-ogah
  * @version 2025-11-05
  */
-public class PricingRequest {
+public class BookOrder {
     private List<Integer> itemIds;
 
-    public  PricingRequest() {
+    public BookOrder() {
         this.itemIds = new ArrayList<>();
     }
 

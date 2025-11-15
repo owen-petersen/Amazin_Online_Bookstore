@@ -155,6 +155,8 @@ async function displayCart() {
 
     let priceSummary = await getPricingSummary(cart);
 
+    localStorage.setItem("orderSummary", JSON.stringify(priceSummary));
+
     document.getElementById("subtotal-value").innerText = `$${priceSummary.itemsTotal.toFixed(2)}`;
     document.getElementById("shipping-value").innerText = `$${priceSummary.shipping.toFixed(2)}`;
     document.getElementById("tax-value").innerText = `$${priceSummary.tax.toFixed(2)}`;

@@ -23,6 +23,22 @@ public class BookService {
                 .orElse(false);
     }
 
+    /**
+     * Retrieves a single book with the bookId from that book's inventory.
+     * @param bookId The id of the book to retrieve.
+     * @return True if the retrieval could be done false otherwise.
+     */
+    public boolean takeBookFromInventory(Integer bookId) {
+        Book book = repo.findById(bookId).orElse(null);
+
+        if (book != null) {
+            book.decrementInventory();
+            repo.save(book);
+            return true;
+        }
+        return false;
+    }
+
     public List<Book> findRelatedByAuthor(Book b, int limit) {
         if (b == null || b.getAuthor() == null) return List.of();
         return repo.findTop5ByAuthorAndIdNot(b.getAuthor(), b.getId());

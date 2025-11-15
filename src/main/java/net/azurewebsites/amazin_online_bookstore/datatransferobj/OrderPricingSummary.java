@@ -64,10 +64,42 @@ public class OrderPricingSummary {
     }
 
     /**
-     * The total cost payable by the user.
+     * Gets the total cost payable by the user.
      * @return The total cost payable by the user.
      */
     public Double getOrderTotal() {
         return orderTotal;
+    }
+
+    /**
+     * Sets the aggregate sum of items without other costs.
+     * @param itemsTotal The new total to assign.
+     */
+    public void setItemsTotal(Double itemsTotal) {
+        this.itemsTotal = itemsTotal;
+    }
+
+    /**
+     * Sets the tax of the items.
+     * @param tax The tax to assign.
+     */
+    public void setTax(Double tax) {
+        this.tax = tax;
+    }
+
+    /**
+     * Sets the shipping cost of the order.
+     * @param shipping The shipping cost to assign.
+     */
+    public void setShipping(Double shipping) {
+        this.shipping = shipping;
+    }
+
+    /**
+     * Sets the total of the order.
+     * @param orderTotal The new total of the order.
+     */
+    public void setOrderTotal(Double orderTotal) {
+        this.orderTotal = orderTotal;
     }
 }
