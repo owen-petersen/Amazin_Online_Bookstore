@@ -33,6 +33,7 @@ public class LoginController {
         if (person != null) {
             session.setAttribute("userId", person.getId());
             session.setAttribute("username", person.getUsername());
+            session.setAttribute("role", person.getRole());
             return "redirect:/";
         } else {
             redirectAttributes.addFlashAttribute("error", "Invalid username or password");

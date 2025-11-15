@@ -83,4 +83,12 @@ public class PersonTest {
         assertNotEquals(lastName1, person.getLastName());
         assertEquals(lastName2, person.getLastName());
     }
+
+    @Test
+    public void testSetRole() {
+        assertEquals(Person.Role.Customer, person.getRole());
+
+        person.setRole(Person.Role.Employee);
+        assertEquals(Person.Role.Employee, person.getRole());
+    }
 }

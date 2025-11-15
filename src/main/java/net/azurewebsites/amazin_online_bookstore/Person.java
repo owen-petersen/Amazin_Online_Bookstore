@@ -6,6 +6,11 @@ import org.springframework.stereotype.Component;
 @Entity
 public class Person {
 
+    public enum Role {
+        Customer,
+        Employee
+    }
+
     // Variables
 
     @Id
@@ -16,6 +21,7 @@ public class Person {
     private String password;
     private String firstName;
     private String lastName;
+    private Role role;
 
     // Getters and Setters
 
@@ -36,7 +42,12 @@ public class Person {
     public String getLastName() {return lastName;}
     public void setLastName(String lastName) {this.lastName = lastName;}
 
+    public Role getRole() {return role;}
+    public void setRole(Role role) {this.role = role;}
+
     // Constructors
 
-    public Person() {}
+    public Person() {
+        this.role =  Role.Customer; // default role should be customer
+    }
 }
