@@ -2,7 +2,10 @@ package net.azurewebsites.amazin_online_bookstore;
 
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,77 +17,54 @@ public class InventoryController {
     private BookService bookService;
 
     @GetMapping("/inventory")
-    public String showInventoryForm(HttpSession session) {
-        if (session.getAttribute("role") != Person.Role.Employee) {
-            // TODO send access denied response
-            return "error";
-        }
-        return "page";
+    public String showInventoryForm(Model model, HttpSession session) {
+        // TODO check role and deny access
+//        if (session.getAttribute("role") != Person.Role.Employee) {
+//            return "error";
+//        }
+        model.addAttribute("restockReq", )
+        return "inventory";
     }
 
     @PostMapping("/inventory")
-    public String restockItem(
+    public ResponseEntity<?> restockItem(
             @RequestParam("isbn") String isbn,
             @RequestParam("numOfItems") Integer numOfItems,
             HttpSession session) {
 
         if (session.getAttribute("role") != Person.Role.Employee) {
-            // TODO send access denied response
-            return "error";
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
         }
 
         if (bookService.existsByIsbn(isbn)) {
             bookService.setInventoryByIsbn(isbn, numOfItems);
-            return "success";
+            return ResponseEntity.ok().build();
         } else {
-            return "redirect:/inventory/new";
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("ISBN not found.");
         }
     }
 
     @GetMapping("/inventory/new")
     public String newItemForm(HttpSession session) {
-        if (session.getAttribute("role") != Person.Role.Employee) {
-            // TODO send access denied response
-            return "error";
-        }
-        return "new item page";
+        // TODO check role and deny access
+//        if (session.getAttribute("role") != Person.Role.Employee) {
+//            return "error";
+//        }
+        return "inventoryNew";
     }
 
     @PostMapping("inventory/new")
-    public String newItem(
-            @RequestParam("title") String title,
-            @RequestParam("author") String author,
-            @RequestParam("isbn") String isbn,
-            @RequestParam("publisher") String publisher,
-            @RequestParam("publishedYear") Integer publishedYear,
-            @RequestParam("edition") Integer edition,
-            @RequestParam("genre") String genre,
-            @RequestParam("inventory") Integer numOfItems,
-            @RequestParam("numOfPages") Integer numOfPages,
-            @RequestParam("price") Double price,
+    public ResponseEntity<?> newItem(
+            @RequestParam("book") Book book,
             HttpSession session){
         if (session.getAttribute("role") != Person.Role.Employee) {
-            // TODO send access denied response
-            return "error";
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
         }
-        if (bookService.existsByIsbn(isbn)) {
-
-            return "error";
+        if (bookService.existsByIsbn(book.getIsbn())) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("ISBN already exists.");
         }
-        bookService.saveNewBook(new Book() {
-            {
-                setTitle(title);
-                setAuthor(author);
-                setIsbn(isbn);
-                setPublisher(publisher);
-                setPublishedYear(publishedYear);
-                setEdition(edition);
-                setGenre(genre);
-                setInventory(numOfItems);
-                setNumOfPages(numOfPages);
-                setPrice(price);
-            }
-        });
+        bookService.saveNewBook(book);
 
+        return ResponseEntity.status(HttpStatus.CREATED).body(book);
     }
 }
