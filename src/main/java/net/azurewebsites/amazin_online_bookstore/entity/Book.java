@@ -1,7 +1,6 @@
-package net.azurewebsites.amazin_online_bookstore;
+package net.azurewebsites.amazin_online_bookstore.entity;
 
 import jakarta.persistence.*;
-import org.springframework.stereotype.Component;
 
 @Entity
 public class Book {
@@ -55,6 +54,10 @@ public class Book {
     public void setGenre(String genre) {this.genre = genre;}
 
     public Integer getInventory() {return inventory;}
+    public void decrementInventory() {
+        if  (this.inventory > 0) this.inventory--;
+        if (this.inventory < 0) this.inventory = 0;
+    }
     public void setInventory(Integer inventory) {this.inventory = inventory;}
 
     public Integer getNumOfPages() {return numOfPages;}

@@ -1,5 +1,6 @@
-package net.azurewebsites.amazin_online_bookstore;
+package net.azurewebsites.amazin_online_bookstore.repository;
 
+import net.azurewebsites.amazin_online_bookstore.entity.Book;
 import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 import java.util.Optional;

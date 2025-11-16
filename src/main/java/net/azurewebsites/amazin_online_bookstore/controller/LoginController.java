@@ -1,7 +1,9 @@
-package net.azurewebsites.amazin_online_bookstore;
+package net.azurewebsites.amazin_online_bookstore.controller;
 
 
 import jakarta.servlet.http.HttpSession;
+import net.azurewebsites.amazin_online_bookstore.entity.Person;
+import net.azurewebsites.amazin_online_bookstore.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

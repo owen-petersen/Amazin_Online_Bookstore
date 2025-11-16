@@ -1,5 +1,8 @@
 package net.azurewebsites.amazin_online_bookstore;
 
+import net.azurewebsites.amazin_online_bookstore.entity.Book;
+import net.azurewebsites.amazin_online_bookstore.repository.BookRepository;
+import net.azurewebsites.amazin_online_bookstore.repository.PurchaseRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,5 +75,29 @@ class BookRepositoryIT {
         assertThat(all)
                 .extracting(Book::getTitle)
                 .containsExactlyInAnyOrder("The Hobbit", "A Tale of Two Cities");
+    }
+    @Test
+    void persistedBooksShouldHaveCorrectInventoryAndPrice() {
+        List<Book> all = bookRepository.findAll();
+
+        // Find books by title
+        Book hobbit = all.stream()
+                .filter(b -> b.getTitle().equals("The Hobbit"))
+                .findFirst()
+                .orElse(null);
+
+        Book twoCities = all.stream()
+                .filter(b -> b.getTitle().equals("A Tale of Two Cities"))
+                .findFirst()
+                .orElse(null);
+
+        // Verify book fields were persisted correctly
+        assertThat(hobbit).isNotNull();
+        assertThat(hobbit.getInventory()).isEqualTo(3);
+        assertThat(hobbit.getPrice()).isEqualTo(25.00);
+
+        assertThat(twoCities).isNotNull();
+        assertThat(twoCities.getInventory()).isEqualTo(5);
+        assertThat(twoCities.getPrice()).isEqualTo(30.00);
     }
 }

@@ -1,0 +1,23 @@
+.cart-management-button {
+    color: white;
+    background-color: #555555;
+    border-radius: 7px;
+    border-color: #666666;
+    border-width: 2px;
+    font-weight: bold;
+    display: flex;
+}
+
+.nice-button {
+    color: white;
+    background-color: #555555;
+    border-radius: 7px;
+    border-color: #666666;
+    border-width: 2px;
+    font-weight: bold;
+    display: flex;
+}
+
+.cart-management-button:hover {
+    background-color: #111111;
+}

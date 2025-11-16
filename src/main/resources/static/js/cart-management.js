@@ -1,7 +1,8 @@
 /** Cart information stored in local storage. */
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 /** The endpoint to retrieve product data */
-let productEndpoint = "/internal/books";
+let bookDataEndpoint = "/internal/books";
+let priceSummDataEndpoint = "/internal/pricing"
 
 /**
  * Enables addition of products to the cart.
@@ -43,7 +44,7 @@ function removeFromCart(itemNo) {
  * @returns {Promise<any>} A promise of the retrieved product.
  */
 function getProduct(itemNo) {
-    let path = `${productEndpoint}/${itemNo}`;
+    let path = `${bookDataEndpoint}/${itemNo}`;
     return fetch(path).then(response => response.json());
 }
 
@@ -54,6 +55,19 @@ function getProduct(itemNo) {
  */
 async function getProducts(itemNumbers) {
     return Promise.all(itemNumbers.map(id => getProduct(id)));
+}
+
+async function getPricingSummary(itemNumbers) {
+    let path = `${priceSummDataEndpoint}/summary`;
+    const request = {
+        "itemIds": cart
+    }
+
+    return fetch(path, {
+        method: "POST",
+        headers: {"Content-type": "application/json"},
+        body: JSON.stringify(request)
+    }).then(response => response.json());
 }
 
 /**
@@ -108,7 +122,7 @@ function formatToHTML(products) {
         itemRemoveButtonBox.className = "item-remove-button-box";
 
         itemRemoveButton = document.createElement("button");
-        itemRemoveButton.className = "item-remove-button";
+        itemRemoveButton.className = "cart-management-button";
         itemRemoveButton.addEventListener("click", () => {
             removeFromCart(products[i].id);
         });
@@ -139,20 +153,14 @@ async function displayCart() {
     cartList.innerHTML = "";
     cartList.append(items); // Cannot use [cartList.innerHTML = items.outerHTML] because DOM loses the event listeners or added functions since html has to be parsed again.
 
-    //TODO MA-O 30-Oct-2025: Move pricing logic away from client side.
-    let productTotal, shipping, tax, estimatedTotal;
-    productTotal = 0;
-    for (let i = 0; i < products.length; i++) {
-        productTotal += products[i].price;
-    }
-    shipping = productTotal > 0? 15 : 0;
-    tax = productTotal * 0.13;
-    estimatedTotal = productTotal + shipping + tax;
+    let priceSummary = await getPricingSummary(cart);
 
-    document.getElementById("subtotal-value").innerText = `$${productTotal.toFixed(2)}`;
-    document.getElementById("shipping-value").innerText = `$${shipping.toFixed(2)}`;
-    document.getElementById("tax-value").innerText = `$${tax.toFixed(2)}`;
-    document.getElementById("estimated-total-value").innerText = `$${estimatedTotal.toFixed(2)}`;
+    localStorage.setItem("orderSummary", JSON.stringify(priceSummary));
+
+    document.getElementById("subtotal-value").innerText = `$${priceSummary.itemsTotal.toFixed(2)}`;
+    document.getElementById("shipping-value").innerText = `$${priceSummary.shipping.toFixed(2)}`;
+    document.getElementById("tax-value").innerText = `$${priceSummary.tax.toFixed(2)}`;
+    document.getElementById("estimated-total-value").innerText = `$${priceSummary.orderTotal.toFixed(2)}`;
     return false;
 }
 

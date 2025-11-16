@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title th:text="${title}">Base html containing all the parts that should be on every page.</title>
     <link rel="stylesheet" href="/css/base-navigation.css">
+    <link rel="stylesheet" href="/css/global.css">
 </th:block>
 <head>
     <meta charset="UTF-8">
@@ -36,11 +37,11 @@
         </div>
         <div id="base-nav-navigation">
             <nav>
-                <ul id="base-nav-navigation-links">
-                    <li class="base-nav-navigation-link-list-item"><a class="base-nav-navigation-link" href="/cart"><span>Cart</span></a></li>
-                    <li class="base-nav-navigation-link-list-item base-nav-navigation-separator">|</li>
-                    <li class="base-nav-navigation-link-list-item"><a class="base-nav-navigation-link" href="/"><span>Home</span></a></li>
-                </ul>
+                <div id="base-nav-navigation-links">
+                    <div class="base-nav-navigation-link-list-item"><a class="base-nav-navigation-link" href="/cart"><span>Cart</span></a></div>
+<!--                    <div class="base-nav-navigation-link-list-item base-nav-navigation-separator"><span>|</span></div>-->
+                    <div class="base-nav-navigation-link-list-item"><a class="base-nav-navigation-link" href="/"><span>Home</span></a></div>
+                </div>
             </nav>
         </div>
     </header>

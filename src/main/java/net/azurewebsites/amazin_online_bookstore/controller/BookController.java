@@ -1,5 +1,7 @@
-package net.azurewebsites.amazin_online_bookstore;
+package net.azurewebsites.amazin_online_bookstore.controller;
 
+import net.azurewebsites.amazin_online_bookstore.service.BookService;
+import net.azurewebsites.amazin_online_bookstore.entity.Book;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +24,6 @@ public class BookController {
         if (book == null) return "error/404";
         model.addAttribute("book", book);               // <— ADD THIS
         model.addAttribute("related", service.findRelatedByAuthor(book, 5));
-        return "books/show";
+        return "books/book";
     }
 }
