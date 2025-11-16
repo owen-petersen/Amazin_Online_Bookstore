@@ -139,7 +139,7 @@ async function displayCart() {
     cartList.innerHTML = "";
     cartList.append(items); // Cannot use [cartList.innerHTML = items.outerHTML] because DOM loses the event listeners or added functions since html has to be parsed again.
 
-    //TODO MA-O 30-Oct-2025: Move pricing logic away from client side.
+    // TODO MA-O 30-Oct-2025: Move pricing logic away from client side.
     let productTotal, shipping, tax, estimatedTotal;
     productTotal = 0;
     for (let i = 0; i < products.length; i++) {

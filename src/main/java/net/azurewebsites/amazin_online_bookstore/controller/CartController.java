@@ -1,4 +1,4 @@
-package net.azurewebsites.amazin_online_bookstore;
+package net.azurewebsites.amazin_online_bookstore.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

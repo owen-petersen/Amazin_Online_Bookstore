@@ -1,9 +1,13 @@
-package net.azurewebsites.amazin_online_bookstore;
+package net.azurewebsites.amazin_online_bookstore.controller;
+
+import net.azurewebsites.amazin_online_bookstore.service.BookService;
+import net.azurewebsites.amazin_online_bookstore.entity.Book;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 @Controller
 @RequestMapping("/books")
 public class BookController {

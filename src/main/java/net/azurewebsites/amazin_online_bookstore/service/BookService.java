@@ -1,5 +1,7 @@
-package net.azurewebsites.amazin_online_bookstore;
+package net.azurewebsites.amazin_online_bookstore.service;
 
+import net.azurewebsites.amazin_online_bookstore.entity.Book;
+import net.azurewebsites.amazin_online_bookstore.repository.BookRepository;
 import org.springframework.stereotype.Service;
 import java.util.List;
 

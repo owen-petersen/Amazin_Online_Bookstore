@@ -1,5 +1,12 @@
 package net.azurewebsites.amazin_online_bookstore;
 
+import net.azurewebsites.amazin_online_bookstore.entity.Book;
+import net.azurewebsites.amazin_online_bookstore.entity.Person;
+import net.azurewebsites.amazin_online_bookstore.entity.Purchase;
+import net.azurewebsites.amazin_online_bookstore.repository.BookRepository;
+import net.azurewebsites.amazin_online_bookstore.repository.PersonRepository;
+import net.azurewebsites.amazin_online_bookstore.repository.PurchaseRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
