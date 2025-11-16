@@ -2,6 +2,8 @@ package net.azurewebsites.amazin_online_bookstore;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Assumptions;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -24,6 +26,16 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @Testcontainers
 @AutoConfigureMockMvc
 class LoginTest {
+
+    //Skip Testcontainers when running in GitHub Actions Windows runner
+    @BeforeAll
+    static void disableInCi() {
+        String os = System.getenv("RUNNER_OS");
+        if ("Windows".equals(os)) {
+            Assumptions.assumeTrue(false,
+                    "Skipping Testcontainers because GitHub Actions Windows cannot run Docker");
+        }
+    }
 
     @Container
     static PostgreSQLContainer<?> postgres =
@@ -66,7 +78,6 @@ class LoginTest {
                         .param("password", "mypassword")
                         .with(csrf()))
                 .andExpect(status().is3xxRedirection());
-
     }
 
     @Test
@@ -76,6 +87,5 @@ class LoginTest {
                         .param("password", "wrongpass")
                         .with(csrf()))
                 .andExpect(status().is3xxRedirection());
-
     }
 }
