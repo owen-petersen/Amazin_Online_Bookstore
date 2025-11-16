@@ -5,7 +5,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Amazin Bookstore</title>
-    <!-- TODO: base-navigation.css will apply header/navigation styling once locally stored cart branch containing it is merged into main -->
     <link rel="stylesheet" href="/css/base-navigation.css">
     <link rel="stylesheet" href="/css/cart-management.css">
     <link rel="stylesheet" href="/css/home.css"/>
@@ -24,52 +23,51 @@
             <div id="base-nav-search-bar-box">
                 <form id="base-nav-search-bar-form" action="/" method="get">
                     <!-- TODO: Implement search functionality (Milestone 2). -->
-                   <label for="base-nav-search-bar-input" class="visually-hidden" hidden>Search</label>
-                   <input id="base-nav-search-bar-input"
-                          placeholder="Search"
-                          type="text"
-                          size="100"
-                          maxlength="150"
-                          hidden>
-               </form>
-           </div>
+                    <label for="base-nav-search-bar-input" class="visually-hidden" hidden>Search</label>
+                    <input id="base-nav-search-bar-input"
+                           placeholder="Search"
+                           type="text"
+                           size="100"
+                           maxlength="150"
+                           hidden>
+                </form>
+            </div>
 
-           <div id="base-nav-user-section-box">
-               <div id="base-nav-cart">
-                   <!-- TODO: /cart route will work once we have a CartController -->
-                   <a href="/cart">
-                       <!-- TODO: The shopping-cart.png icon will display correctly once the locally stored cart branch is merged -->
-                       <img id="shopping-cart-img"
-                            class="user-section-icon"
-                            src="/images/icons/shopping-cart.png"
-                            alt="Shopping cart image">
-                   </a>
-               </div>
-           </div>
-       </div>
-   </div>
+            <div id="base-nav-user-section-box">
+                <div id="base-nav-cart">
+                    <a href="/cart">
+                        <img id="shopping-cart-img"
+                             class="user-section-icon"
+                             src="/images/icons/shopping-cart.png"
+                             alt="Shopping cart image">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 
-   <div id="base-nav-navigation">
-       <nav>
-           <ul id="base-nav-navigation-links">
-               <li class="base-nav-navigation-link-list-item">
-                   <a class="base-nav-navigation-link" href="/cart"><span>Cart</span></a>
-               </li>
-               <li class="base-nav-navigation-link-list-item base-nav-navigation-separator">|</li>
-               <li class="base-nav-navigation-link-list-item">
-                   <a class="base-nav-navigation-link" href="/"><span>Home</span></a>
-               </li>
-           </ul>
-       </nav>
-   </div>
+    <div id="base-nav-navigation">
+        <nav>
+            <ul id="base-nav-navigation-links">
+                <li class="base-nav-navigation-link-list-item">
+                    <a class="base-nav-navigation-link" href="/cart"><span>Cart</span></a>
+                </li>
+                <li class="base-nav-navigation-link-list-item base-nav-navigation-separator">|</li>
+                <li class="base-nav-navigation-link-list-item">
+                    <a class="base-nav-navigation-link" href="/"><span>Home</span></a>
+                </li>
+            </ul>
+        </nav>
+    </div>
 </header>
 
 <main id="home-content-wrapper">
     <script src="/js/cart-management.js"></script>
-   <section id="book-list-section">
-       <h2 class="section-title">Available Books</h2>
 
-       <!-- If no books -->
+    <section id="book-list-section">
+        <h2 class="section-title">Available Books</h2>
+
+        <!-- If no books -->
         <div th:if="${#lists.isEmpty(books)}" class="book-list-empty">
             <p>No books are available right now.</p>
         </div>
@@ -78,7 +76,14 @@
         <ul th:if="${!#lists.isEmpty(books)}" id="book-list">
             <li class="book-list-item"
                 th:each="book : ${books}">
-                <!-- TODO: Once BookController is merged, these links will correctly open each book's focus page at /book/{id}. -->
+
+                <!-- Cover image based on book.id -->
+                <img class="book-cover"
+                     th:src="@{'/images.book/' + ${book.id} + '.png'}"
+                     th:alt="'Cover for ' + ${book.title}"
+                     style="width:120px; height:auto; margin-right:1rem;">
+
+                <!-- Title links to details page -->
                 <a class="book-list-title"
                    th:href="@{'/books/' + ${book.id}}"
                    th:text="${book.title}">
@@ -103,13 +108,15 @@
                     <span class="book-list-separator">|</span>
 
                     <span class="book-list-add-button">
-                        <button class="item-remove-button" th:onclick="'addToCart(' + ${book.id} + ')'">Add to cart</button>
+                        <button class="item-remove-button"
+                                th:onclick="'addToCart(' + ${book.id} + ')'">
+                            Add to cart
+                        </button>
                     </span>
                 </div>
             </li>
         </ul>
     </section>
-
 </main>
 
 <footer th:fragment="footer">
