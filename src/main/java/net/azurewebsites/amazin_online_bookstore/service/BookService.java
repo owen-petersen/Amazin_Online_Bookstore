@@ -45,11 +45,18 @@ public class BookService {
     }
 
     public boolean existsByIsbn(String isbn) {
-        return (repo.findByIsbn(isbn) != null);
+        return (repo.findByIsbn(isbn).orElse(null) != null);
     }
 
-    public void setInventoryByIsbn(String isbn, int qty) {
-        repo.findByIsbn(isbn).setInventory(qty);
+    public void restockBookInInventory(String isbn, int qty) {
+        Book book = repo.findByIsbn(isbn).orElse(null);
+
+        if (book != null) {
+            for (int i = 0; i < qty; i++){
+                book.incrementInventory();
+            }
+            repo.save(book);
+        }
     }
 
     public void saveNewBook(Book book) {

@@ -15,12 +15,12 @@
 <form th:action="@{/inventory}" th:method="post" th:object="${restockReq}">
     <div class="form-row">
         <label for="isbn">ISBN</label>
-        <input id="isbn" type="text" th:field="*{isbn}" placeholder="978-3-16-148410-0" />
+        <input id="isbn" type="text" th:field="*{isbn}" />
     </div>
 
     <div class="form-row">
         <label for="restockCount">Restock Count</label>
-        <input id="restockCount" type="number" th:field="*{quantity}" min="0" step="1" placeholder="0" />
+        <input id="restockCount" type="number" th:field="*{quantity}" min="0" step="1" />
     </div>
 
     <button type="submit">Submit</button>

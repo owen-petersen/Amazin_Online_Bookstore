@@ -1,4 +1,4 @@
-package net.azurewebsites.amazin_online_bookstore;
+package net.azurewebsites.amazin_online_bookstore.controller;
 
 import jakarta.servlet.http.HttpSession;
 import net.azurewebsites.amazin_online_bookstore.datatransferobj.RestockRequest;
@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -31,20 +32,21 @@ public class InventoryController {
     }
 
     @PostMapping("/inventory")
-    public ResponseEntity<?> restockItem(
-            @RequestParam("isbn") String isbn,
-            @RequestParam("numOfItems") Integer numOfItems,
-            HttpSession session) {
+    public String restockItem(
+            @ModelAttribute RestockRequest restockReq,
+            HttpSession session)
+    {
 
-        if (session.getAttribute("role") != Person.Role.Employee) {
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
-        }
+        // TODO check role and deny access
+//        if (session.getAttribute("role") != Person.Role.Employee) {
+//            return "error";
+//        }
 
-        if (bookService.existsByIsbn(isbn)) {
-            bookService.setInventoryByIsbn(isbn, numOfItems);
-            return ResponseEntity.ok().build();
+        if (bookService.existsByIsbn(restockReq.getIsbn())) {
+            bookService.restockBookInInventory(restockReq.getIsbn(), restockReq.getQuantity());
+            return "redirect:/";
         } else {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body("ISBN not found.");
+            return "inventory";
         }
     }
 
