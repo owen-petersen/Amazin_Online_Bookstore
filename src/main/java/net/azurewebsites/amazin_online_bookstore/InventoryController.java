@@ -1,6 +1,9 @@
 package net.azurewebsites.amazin_online_bookstore;
 
 import jakarta.servlet.http.HttpSession;
+import net.azurewebsites.amazin_online_bookstore.entity.Book;
+import net.azurewebsites.amazin_online_bookstore.entity.Person;
+import net.azurewebsites.amazin_online_bookstore.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
