@@ -1,6 +1,7 @@
 package net.azurewebsites.amazin_online_bookstore;
 
 import jakarta.servlet.http.HttpSession;
+import net.azurewebsites.amazin_online_bookstore.datatransferobj.RestockRequest;
 import net.azurewebsites.amazin_online_bookstore.entity.Book;
 import net.azurewebsites.amazin_online_bookstore.entity.Person;
 import net.azurewebsites.amazin_online_bookstore.service.BookService;
@@ -25,7 +26,7 @@ public class InventoryController {
 //        if (session.getAttribute("role") != Person.Role.Employee) {
 //            return "error";
 //        }
-        model.addAttribute("restockReq", )
+        model.addAttribute("restockReq", new RestockRequest());
         return "inventory";
     }
 
