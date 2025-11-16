@@ -1,5 +1,7 @@
 package net.azurewebsites.amazin_online_bookstore;
 
+import net.azurewebsites.amazin_online_bookstore.entity.Person;
+import net.azurewebsites.amazin_online_bookstore.repository.PersonRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 
