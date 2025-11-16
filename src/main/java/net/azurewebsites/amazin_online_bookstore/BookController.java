@@ -22,6 +22,6 @@ public class BookController {
         if (book == null) return "error/404";
         model.addAttribute("book", book);               // <— ADD THIS
         model.addAttribute("related", service.findRelatedByAuthor(book, 5));
-        return "books/book";
+        return "books/show";
     }
 }
