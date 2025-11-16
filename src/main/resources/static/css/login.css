@@ -1,0 +1,89 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", Arial, sans-serif;
+    background: #F7EEDB; /* soft bookstore cream */
+}
+
+.container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-card {
+    width: 420px;
+    padding: 40px;
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+h2 {
+    color: #4a3f35;
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    color: #7a7a7a;
+    margin-bottom: 20px;
+}
+
+form {
+    text-align: left;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 4px;
+    font-weight: 600;
+    color: #4a3f35;
+}
+
+input {
+    width: 100%;
+    margin-top: 0;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #c9c2b9;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background: #4a3f35;
+    border: none;
+    color: white;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+    box-sizing: border-box;
+}
+
+button:hover {
+    background: #6a5847;
+}
+
+.error {
+    color: #b20000;
+    margin-bottom: 10px;
+}
+
+.success {
+    color: #0a7c29;
+    margin-bottom: 10px;
+}
