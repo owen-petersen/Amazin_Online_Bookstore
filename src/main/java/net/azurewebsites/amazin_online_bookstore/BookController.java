@@ -1,11 +1,9 @@
 package net.azurewebsites.amazin_online_bookstore;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 @Controller
 @RequestMapping("/books")
 public class BookController {
@@ -22,6 +20,6 @@ public class BookController {
         if (book == null) return "error/404";
         model.addAttribute("book", book);               // <— ADD THIS
         model.addAttribute("related", service.findRelatedByAuthor(book, 5));
-        return "books/show";
+        return "books/book";
     }
 }
