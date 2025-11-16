@@ -73,4 +73,28 @@ class BookRepositoryIT {
                 .extracting(Book::getTitle)
                 .containsExactlyInAnyOrder("The Hobbit", "A Tale of Two Cities");
     }
+    @Test
+    void persistedBooksShouldHaveCorrectInventoryAndPrice() {
+        List<Book> all = bookRepository.findAll();
+
+        // Find books by title
+        Book hobbit = all.stream()
+                .filter(b -> b.getTitle().equals("The Hobbit"))
+                .findFirst()
+                .orElse(null);
+
+        Book twoCities = all.stream()
+                .filter(b -> b.getTitle().equals("A Tale of Two Cities"))
+                .findFirst()
+                .orElse(null);
+
+        // Verify book fields were persisted correctly
+        assertThat(hobbit).isNotNull();
+        assertThat(hobbit.getInventory()).isEqualTo(3);
+        assertThat(hobbit.getPrice()).isEqualTo(25.00);
+
+        assertThat(twoCities).isNotNull();
+        assertThat(twoCities.getInventory()).isEqualTo(5);
+        assertThat(twoCities.getPrice()).isEqualTo(30.00);
+    }
 }
