@@ -15,6 +15,38 @@ public class PurchaseTest {
     }
 
     @Test
+    public void testSetBuyer(){
+        assertNull(purchase.getBuyer());
+
+        Person person1 = new Person();
+        person1.setFirstName("John");
+        person1.setLastName("Smith");
+
+        purchase.setBuyer(person1);
+        assertSame(person1, purchase.getBuyer());
+
+        // Different object, different values
+        Person person2 = new Person();
+        person2.setFirstName("Jane");
+        person2.setLastName("Smith");
+
+        purchase.setBuyer(person2);
+        assertNotSame(person1, purchase.getBuyer());
+        assertSame(person2, purchase.getBuyer());
+
+        // Different object, same values as person2
+        Person person3 = new Person();
+        person3.setFirstName("Joe");
+        person3.setLastName("Smith");
+
+        purchase.setBuyer(person3);
+
+        // Explicitly check reference identity
+        assertNotSame(person2, purchase.getBuyer());
+        assertSame(person3, purchase.getBuyer());
+    }
+
+    @Test
     public void testSetPurchasedBook() {
         assertNull(purchase.getPurchasedBook());
 
