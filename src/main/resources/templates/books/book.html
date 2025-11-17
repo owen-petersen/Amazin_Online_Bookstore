@@ -3,49 +3,13 @@
       xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta charset="UTF-8">
-    <title th:text="${book.title} + ' – Amazin Bookstore'">Book Details</title>
-    <link rel="stylesheet" href="/css/base-navigation.css">
+    <th:block th:replace="~{base :: head(${book.title} + ' – Amazin Bookstore')}"></th:block>
     <link rel="stylesheet" href="/css/home.css"/>
 </head>
 
 <body>
-<header th:fragment="header">
-    <div id="base-nav-top-bar">
-        <div id="base-nav-top-bar-container">
-            <div id="base-nav-logo-box">
-                <a href="/" style="text-decoration: none; color: inherit;">
-                    <h1 style="margin: 0; font-size: 1.25rem;">Amazin</h1>
-                </a>
-            </div>
-
-            <div id="base-nav-user-section-box">
-                <div id="base-nav-cart">
-                    <a href="/cart">
-                        <img id="shopping-cart-img"
-                             class="user-section-icon"
-                             src="/images/icons/shopping-cart.png"
-                             alt="Shopping cart image">
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="base-nav-navigation">
-        <nav>
-            <ul id="base-nav-navigation-links">
-                <li class="base-nav-navigation-link-list-item">
-                    <a class="base-nav-navigation-link" href="/"><span>Home</span></a>
-                </li>
-                <li class="base-nav-navigation-link-list-item base-nav-navigation-separator">|</li>
-                <li class="base-nav-navigation-link-list-item">
-                    <a class="base-nav-navigation-link" href="/cart"><span>Cart</span></a>
-                </li>
-            </ul>
-        </nav>
-    </div>
-</header>
+<script src="/js/cart-management.js"></script>
+<header th:replace="~{base :: header}"></header>
 
 <main id="home-content-wrapper">
     <section id="book-detail-section">
@@ -92,10 +56,10 @@
                 </p>
 
                 <p><strong>Price:</strong>
-                    $<span th:text="${book.price}">0.00</span>
+                    $<span th:text="${#numbers.formatDecimal(book.price, 1, 'COMMA', 2, 'POINT')}">0.00</span>
                 </p>
 
-                <button class="item-remove-button"
+                <button class="cart-management-button"
                         th:onclick="'addToCart(' + ${book.id} + ')'">
                     Add to cart
                 </button>
