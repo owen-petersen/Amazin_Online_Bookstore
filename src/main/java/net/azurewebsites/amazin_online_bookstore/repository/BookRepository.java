@@ -12,7 +12,7 @@ public interface BookRepository extends CrudRepository<Book, Integer> {
 
     List<Book> findTop5ByAuthorAndIdNot(String author, Integer id);
 
-    Book findByIsbn(String isbn);
+    Optional<Book> findByIsbn(String isbn);
 
     List<Book> findAll();
 }

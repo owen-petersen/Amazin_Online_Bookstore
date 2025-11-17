@@ -43,4 +43,23 @@ public class BookService {
         if (b == null || b.getAuthor() == null) return List.of();
         return repo.findTop5ByAuthorAndIdNot(b.getAuthor(), b.getId());
     }
+
+    public boolean existsByIsbn(String isbn) {
+        return (repo.findByIsbn(isbn).orElse(null) != null);
+    }
+
+    public void restockBookInInventory(String isbn, int qty) {
+        Book book = repo.findByIsbn(isbn).orElse(null);
+
+        if (book != null) {
+            for (int i = 0; i < qty; i++){
+                book.incrementInventory();
+            }
+            repo.save(book);
+        }
+    }
+
+    public void saveNewBook(Book book) {
+        repo.save(book);
+    }
 }

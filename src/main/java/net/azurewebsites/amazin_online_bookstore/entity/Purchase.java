@@ -10,6 +10,8 @@ public class Purchase {
     @Id
     @GeneratedValue
     private Integer id;
+    @ManyToOne (fetch = FetchType.EAGER)
+    private Person buyer;
     @ManyToOne(fetch = FetchType.EAGER)
     private Book purchasedBook;
     private String dateTime; //TODO OP 25-Oct-2025 Replace with actual date/time type
@@ -19,6 +21,9 @@ public class Purchase {
     // Getters and Setters
 
     public int getId() {return id;}
+
+    public Person getBuyer() {return buyer;}
+    public void setBuyer(Person buyer) {this.buyer = buyer;}
 
     public Book getPurchasedBook() {return purchasedBook;}
     public void setPurchasedBook(Book purchasedBook) {this.purchasedBook = purchasedBook;}

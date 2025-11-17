@@ -31,6 +31,15 @@ public class TableInitializer implements CommandLineRunner {
         person.setLastName("Ahsan");
         personRepository.save(person);
 
+        Person person2 = new Person();
+        person2.setEmail("manager@email.com");
+        person2.setUsername("manager");
+        person2.setPassword("1234");
+        person2.setFirstName("manager");
+        person2.setLastName("manager");
+        person2.setRole(Person.Role.Employee);
+        personRepository.save(person2);
+
         Book book = new Book();
         book.setTitle("The Hobbit");
         book.setAuthor("J.R.R. Tolkien");
