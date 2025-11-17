@@ -43,4 +43,17 @@ public class BookService {
         if (b == null || b.getAuthor() == null) return List.of();
         return repo.findTop5ByAuthorAndIdNot(b.getAuthor(), b.getId());
     }
+
+    public List<Book> getAllBooks() {
+        return repo.findAll();
+    }
+
+    public List<Book> search(String query) {
+        if (query == null || query.isBlank()) {
+            return repo.findAll();
+        }
+        return repo.findByTitleContainingIgnoreCaseOrAuthorContainingIgnoreCaseOrGenreContainingIgnoreCase(
+                query, query, query
+        );
+    }
 }

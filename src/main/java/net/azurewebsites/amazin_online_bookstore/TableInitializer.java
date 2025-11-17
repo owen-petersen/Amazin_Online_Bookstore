@@ -44,6 +44,19 @@ public class TableInitializer implements CommandLineRunner {
         book.setPrice(25.00);
         bookRepository.save(book);
 
+        Book tale = new Book();
+        tale.setTitle("A Tale of Two Cities");
+        tale.setAuthor("Charles Dickens");
+        tale.setIsbn("987654321");
+        tale.setPublisher("Chapman & Hall");
+        tale.setPublishedYear(1859);
+        tale.setEdition(1);
+        tale.setGenre("Historical");
+        tale.setInventory(5);
+        tale.setNumOfPages(544);
+        tale.setPrice(30.00);
+        bookRepository.save(tale);
+
         Purchase purchase = new Purchase();
         purchase.setDateTime("Oct25");
         purchase.setPurchasedBook(book);
