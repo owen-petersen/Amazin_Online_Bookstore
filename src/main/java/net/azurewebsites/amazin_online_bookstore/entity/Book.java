@@ -58,6 +58,9 @@ public class Book {
         if  (this.inventory > 0) this.inventory--;
         if (this.inventory < 0) this.inventory = 0;
     }
+    public void incrementInventory() {
+        this.inventory++;
+    }
     public void setInventory(Integer inventory) {this.inventory = inventory;}
 
     public Integer getNumOfPages() {return numOfPages;}
