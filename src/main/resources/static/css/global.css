@@ -21,3 +21,7 @@
 .cart-management-button:hover {
     background-color: #111111;
 }
+
+body::-webkit-scrollbar {
+    display: none; /* Chrome and a few other browsers */
+}
