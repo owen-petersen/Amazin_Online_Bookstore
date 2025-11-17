@@ -32,12 +32,26 @@ public class HomeController {
 
         List<Book> books = bookService.getAllBooks();
         model.addAttribute("books", books);
-        model.addAttribute("q", ""); // empty search box
+
+        // default empty filters
+        model.addAttribute("q", "");
+        model.addAttribute("selectedAuthor", "");
+        model.addAttribute("selectedGenre", "");
+        model.addAttribute("selectedPublisher", "");
+
+        // dropdown options
+        model.addAttribute("authors", bookService.getAllAuthors());
+        model.addAttribute("genres", bookService.getAllGenres());
+        model.addAttribute("publishers", bookService.getAllPublishers());
+
         return "index";
     }
 
     @GetMapping("/search")
     public String search(@RequestParam(value = "q", required = false) String q,
+                         @RequestParam(value = "author", required = false) String author,
+                         @RequestParam(value = "genre", required = false) String genre,
+                         @RequestParam(value = "publisher", required = false) String publisher,
                          Model model,
                          HttpSession session) {
 
@@ -45,9 +59,19 @@ public class HomeController {
             return "redirect:/login";
         }
 
-        List<Book> books = bookService.search(q);
+        List<Book> books = bookService.searchAndFilter(q, author, genre, publisher);
         model.addAttribute("books", books);
-        model.addAttribute("q", q == null ? "" : q); // keeps the text in the search bar
+
+        model.addAttribute("q", q == null ? "" : q);
+        model.addAttribute("selectedAuthor", author == null ? "" : author);
+        model.addAttribute("selectedGenre", genre == null ? "" : genre);
+        model.addAttribute("selectedPublisher", publisher == null ? "" : publisher);
+
+        // Dropdown options
+        model.addAttribute("authors", bookService.getAllAuthors());
+        model.addAttribute("genres", bookService.getAllGenres());
+        model.addAttribute("publishers", bookService.getAllPublishers());
+
         return "index";
     }
 

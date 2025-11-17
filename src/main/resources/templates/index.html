@@ -14,6 +14,50 @@
     <script src="/js/cart-management.js"></script>
 
     <section id="book-list-section">
+        <section id="filters">
+            <form th:action="@{/search}" method="get" id="filter-form">
+                <input type="hidden" name="q" th:value="${q}"/>
+
+                <label>
+                    Author:
+                    <select name="author">
+                        <option value="">All authors</option>
+                        <option th:each="a : ${authors}"
+                                th:value="${a}"
+                                th:text="${a}"
+                                th:selected="${a == selectedAuthor}">
+                        </option>
+                    </select>
+                </label>
+
+                <label>
+                    Genre:
+                    <select name="genre">
+                        <option value="">All genres</option>
+                        <option th:each="g : ${genres}"
+                                th:value="${g}"
+                                th:text="${g}"
+                                th:selected="${g == selectedGenre}">
+                        </option>
+                    </select>
+                </label>
+
+                <label>
+                    Publisher:
+                    <select name="publisher">
+                        <option value="">All publishers</option>
+                        <option th:each="p : ${publishers}"
+                                th:value="${p}"
+                                th:text="${p}"
+                                th:selected="${p == selectedPublisher}">
+                        </option>
+                    </select>
+                </label>
+
+                <button type="submit">Apply filters</button>
+            </form>
+        </section>
+
         <h2 class="section-title">Available Books</h2>
 
         <!-- If no books -->
