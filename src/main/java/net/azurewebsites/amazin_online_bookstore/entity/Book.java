@@ -73,4 +73,22 @@ public class Book {
     // Constructors
 
     public Book() {}
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", picture='" + picture + '\'' +
+                ", author='" + author + '\'' +
+                ", isbn='" + isbn + '\'' +
+                ", publisher='" + publisher + '\'' +
+                ", publishedYear=" + publishedYear +
+                ", edition=" + edition +
+                ", genre='" + genre + '\'' +
+                ", inventory=" + inventory +
+                ", numOfPages=" + numOfPages +
+                ", price=" + price +
+                '}';
+    }
 }

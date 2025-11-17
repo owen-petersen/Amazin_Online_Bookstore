@@ -38,4 +38,15 @@ public class Purchase {
     // Constructors
 
     public Purchase() {}
+
+    @Override
+    public String toString() {
+        return "Purchase{" +
+                "id=" + id +
+                ", \n\tbuyer=" + buyer +
+                ", \n\tpurchasedBook=" + purchasedBook +
+                ", \n\tdateTime='" + dateTime + '\'' +
+                ", quantity=" + quantity +
+                '}';
+    }
 }
