@@ -53,6 +53,58 @@ public class TableInitializer implements CommandLineRunner {
         book.setPrice(25.00);
         bookRepository.save(book);
 
+        Book twoCities = new Book();
+        twoCities.setTitle("A Tale of Two Cities");
+        twoCities.setAuthor("Charles Dickens");
+        twoCities.setIsbn("9780582030473");
+        twoCities.setPublisher("Charles Dickens");
+        twoCities.setPublishedYear(1859);
+        twoCities.setEdition(2);
+        twoCities.setGenre("Historical");
+        twoCities.setInventory(5);
+        twoCities.setNumOfPages(350);
+        twoCities.setPrice(30.00);
+        bookRepository.save(twoCities);
+
+        Book dune = new Book();
+        dune.setTitle("Dune");
+        dune.setAuthor("Frank Herbert");
+        dune.setIsbn("9780441172719");
+        dune.setPublisher("Chilton Books");
+        dune.setPublishedYear(1965);
+        dune.setEdition(1);
+        dune.setGenre("Science Fiction");
+        dune.setInventory(5);
+        dune.setNumOfPages(412);
+        dune.setPrice(29.99);
+        bookRepository.save(dune);
+
+        Book lotr = new Book();
+        lotr.setTitle("The Lord of the Rings");
+        lotr.setAuthor("J.R.R. Tolkien");
+        lotr.setIsbn("9780544003415");
+        lotr.setPublisher("Allen & Unwin");
+        lotr.setPublishedYear(1954);
+        lotr.setEdition(1);
+        lotr.setGenre("Fantasy");
+        lotr.setInventory(5);
+        lotr.setNumOfPages(1178);
+        lotr.setPrice(39.99);
+        bookRepository.save(lotr);
+
+        Book hailMary = new Book();
+        hailMary.setTitle("Project Hail Mary");
+        hailMary.setAuthor("Andy Weir");
+        hailMary.setIsbn("9780593135204");
+        hailMary.setPublisher("Ballantine Books");
+        hailMary.setPublishedYear(2021);
+        hailMary.setEdition(1);
+        hailMary.setGenre("Science Fiction");
+        hailMary.setInventory(5);
+        hailMary.setNumOfPages(496);
+        hailMary.setPrice(27.00);
+        bookRepository.save(hailMary);
+
         Purchase purchase = new Purchase();
         purchase.setDateTime("Oct25");
         purchase.setPurchasedBook(book);
