@@ -76,7 +76,7 @@ async function getPricingSummary(itemNumbers) {
  * @returns {HTMLDivElement} The formatted HTML model.
  */
 function formatToHTML(products) {
-    let items, item, itemImage, itemDetails, itemTitle, itemAuthor, itemPublishingYr, itemNoPages, itemPrice,
+    let items, item, itemImage, itemImageIm, itemDetails, itemTitle, itemAuthor, itemPublishingYr, itemNoPages, itemPrice,
         itemRemoveButtonBox, itemRemoveButton;
     let num;
     items = document.createElement("div");
@@ -89,6 +89,12 @@ function formatToHTML(products) {
         // Item image
         itemImage = document.createElement("div");
         itemImage.className = "item-picture";
+        itemImageIm = document.createElement("img");
+        itemImageIm.className = "book-cover";
+        itemImageIm.src = `/images.book/${item.id}.png`;
+        itemImageIm.alt = `Cover for ${item.title}`;
+        itemImageIm.style = "width:120px; height:auto; margin-right:1rem;";
+        itemImage.appendChild(itemImageIm);
 
         // Item details
         itemDetails = document.createElement("div");
