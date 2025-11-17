@@ -18,7 +18,7 @@
     display: flex;
 }
 
-.cart-management-button:hover {
+.cart-management-button:hover, .nice-button:hover {
     background-color: #111111;
 }
 
