@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <th:block th:replace="~{base :: head('Purchase complete')}">
+</head>
+<body>
+    <header th:replace="~{base :: header}"></header>
+
+    <main>
+        <form action="/" method="get">
+            <div style="display: flex; justify-content: center; align-items: center; padding-top: 200px">
+                <strong>You completed your purchase.</strong>
+            </div>
+            <div style="display: flex; justify-content: center; align-items: center; padding-top: 30px">
+                <button class="nice-button" type="submit" value="Go to homepage" formaction="/">Go to home page</button>
+            </div>
+        </form>
+    </main>
+
+    <footer th:replace="~{base :: footer}"></footer>
+</body>
+</html>

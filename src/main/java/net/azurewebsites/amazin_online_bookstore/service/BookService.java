@@ -1,5 +1,7 @@
-package net.azurewebsites.amazin_online_bookstore;
+package net.azurewebsites.amazin_online_bookstore.service;
 
+import net.azurewebsites.amazin_online_bookstore.entity.Book;
+import net.azurewebsites.amazin_online_bookstore.repository.BookRepository;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
@@ -19,6 +21,22 @@ public class BookService {
         return repo.findById(bookId)
                 .map(b -> b.getInventory() != null && b.getInventory() >= qty)
                 .orElse(false);
+    }
+
+    /**
+     * Retrieves a single book with the bookId from that book's inventory.
+     * @param bookId The id of the book to retrieve.
+     * @return True if the retrieval could be done false otherwise.
+     */
+    public boolean takeBookFromInventory(Integer bookId) {
+        Book book = repo.findById(bookId).orElse(null);
+
+        if (book != null) {
+            book.decrementInventory();
+            repo.save(book);
+            return true;
+        }
+        return false;
     }
 
     public List<Book> findRelatedByAuthor(Book b, int limit) {

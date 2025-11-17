@@ -1,5 +1,8 @@
 package net.azurewebsites.amazin_online_bookstore;
 
+import net.azurewebsites.amazin_online_bookstore.entity.Book;
+import net.azurewebsites.amazin_online_bookstore.repository.BookRepository;
+import net.azurewebsites.amazin_online_bookstore.repository.PurchaseRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

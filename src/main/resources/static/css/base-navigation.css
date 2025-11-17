@@ -1,16 +1,24 @@
+body {
+    font-family: "Verdana", serif;
+}
+header {
+    position: sticky;
+    top: 0;
+    background-color: white;
+}
 #base-nav-top-bar {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: sticky;
     border-bottom: 1px solid #bbbbbb;
-    padding-bottom: 40px;
+    padding-bottom: 10px;
 }
 
 #base-nav-top-bar-container {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     align-items: center;
     width: 100%;
     height: 100%;
@@ -43,7 +51,8 @@
     display: flex;
     flex: 1;
     flex-direction: row;
-    align-items: flex-end;
+    justify-content: flex-end;
+    padding-left: 20px;
 }
 
 .user-section-icon {
@@ -56,8 +65,11 @@
 }
 
 #base-nav-navigation-links {
-    display: flex;
-    flex-direction: row;
+    /*display: flex;*/
+    /*flex-direction: row;*/
+    display: grid;
+    grid-auto-columns: 100px;
+    grid-auto-flow: column;
     align-items: flex-start;
     background-color: #222222;
     margin: 0 0 0 0;
@@ -70,7 +82,7 @@
 /*}*/
 
 .base-nav-navigation-link-list-item {
-    list-style-type: none;
+    width: 100%;
 }
 
 .base-nav-navigation-link, .base-nav-navigation-separator {
