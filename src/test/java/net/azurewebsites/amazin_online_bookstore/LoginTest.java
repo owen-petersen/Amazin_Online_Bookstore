@@ -4,13 +4,12 @@ import net.azurewebsites.amazin_online_bookstore.entity.Person;
 import net.azurewebsites.amazin_online_bookstore.repository.PersonRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.web.servlet.MockMvc;
+
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 
 import org.testcontainers.containers.PostgreSQLContainer;
@@ -26,6 +25,15 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @Testcontainers
 @AutoConfigureMockMvc
 class LoginTest {
+
+    // Disabling Testcontainers on Windows CI runners
+    static {
+        String os = System.getenv("RUNNER_OS");
+        if ("Windows".equals(os)) {
+            System.setProperty("testcontainers.enabled", "false");
+            System.out.println("⚠ Testcontainers disabled on Windows CI");
+        }
+    }
 
     @Container
     static PostgreSQLContainer<?> postgres =
