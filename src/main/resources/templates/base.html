@@ -21,9 +21,17 @@
                     </a>
                 </div>
                 <div id="base-nav-search-bar-box">
-                    <form id="base-nav-search-bar-form" action="/" method="get">
-                        <label for="base-nav-search-bar-input" hidden></label>
-                        <input id="base-nav-search-bar-input" placeholder="Search" type="text" size="100" maxlength="150" hidden>
+                    <form id="base-nav-search-bar-form"
+                          th:action="@{/search}"
+                          method="get">
+                        <label for="base-nav-search-bar-input" class="visually-hidden">Search</label>
+                        <input id="base-nav-search-bar-input"
+                               name="q"
+                               placeholder="Search"
+                               type="text"
+                               size="100"
+                               maxlength="150"
+                               th:value="${q}">
                     </form>
                 </div>
                 <div id="base-nav-user-section-box">
