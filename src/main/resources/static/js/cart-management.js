@@ -91,7 +91,7 @@ function formatToHTML(products) {
         itemImage.className = "item-picture";
         itemImageIm = document.createElement("img");
         itemImageIm.className = "book-cover";
-        itemImageIm.src = `/images.book/${item.id}.png`;
+        itemImageIm.src = `/images/book/${item.id}.png`;
         itemImageIm.alt = `Cover for ${item.title}`;
         itemImageIm.style = "width:120px; height:auto; margin-right:1rem;";
         itemImage.appendChild(itemImageIm);
