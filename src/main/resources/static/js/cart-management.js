@@ -76,14 +76,16 @@ async function getPricingSummary(itemNumbers) {
  * @returns {HTMLDivElement} The formatted HTML model.
  */
 function formatToHTML(products) {
-    let items, item, itemImage, itemImageIm, itemDetails, itemTitle, itemAuthor, itemPublishingYr, itemNoPages, itemPrice,
+    let items, item, itemImage, itemImageIm, itemDetails, itemTitle, itemTitleLink, itemAuthor, itemPublishingYr, itemNoPages, itemPrice,
         itemRemoveButtonBox, itemRemoveButton;
     let num;
+    let book
     items = document.createElement("div");
     items.className = "items";
     for (let i = 0; i < cart.length; i++) {
+        book = products[i];
         item = document.createElement("div");
-        item.id = products[i].id;
+        item.id = book.id;
         item.className = "item";
 
         // Item image
@@ -91,8 +93,8 @@ function formatToHTML(products) {
         itemImage.className = "item-picture";
         itemImageIm = document.createElement("img");
         itemImageIm.className = "book-cover";
-        itemImageIm.src = `/images/book/${item.id}.png`;
-        itemImageIm.alt = `Cover for ${item.title}`;
+        itemImageIm.src = `/images/book/${book.id}.png`;
+        itemImageIm.alt = `Cover for ${book.title}`;
         itemImageIm.style = "width:120px; height:auto; margin-right:1rem;";
         itemImage.appendChild(itemImageIm);
 
@@ -102,23 +104,28 @@ function formatToHTML(products) {
 
         itemTitle = document.createElement("div");
         itemTitle.className = "item-title";
-        itemTitle.textContent = products[i].title;
+        itemTitleLink = document.createElement("a");
+        itemTitleLink.className = "book-list-title";
+        itemTitleLink.href = `/books/${book.id}`;
+        itemTitleLink.text = `${book.title}`;
+        itemTitle.appendChild(itemTitleLink);
+
 
         itemAuthor = document.createElement("div");
         itemAuthor.className = "item-author";
-        itemAuthor.textContent = products[i].author;
+        itemAuthor.textContent = book.author;
 
         itemPublishingYr = document.createElement("div");
         itemPublishingYr.className = "item-publishing-year";
-        itemPublishingYr.textContent = `Publishing year: ${products[i].publishedYear}`;
+        itemPublishingYr.textContent = `Publishing year: ${book.publishedYear}`;
 
         itemNoPages = document.createElement("div");
         itemNoPages.className = "item-no-pages";
-        itemNoPages.textContent = `No. of pages: ${products[i].numOfPages}`;
+        itemNoPages.textContent = `No. of pages: ${book.numOfPages}`;
 
         itemPrice = document.createElement("div");
         itemPrice.className = "item-price";
-        num = (products[i].price);
+        num = (book.price);
         itemPrice.textContent = `$${num.toFixed(2)}`;
 
         itemDetails.append(itemTitle, itemAuthor, itemPublishingYr, itemNoPages, itemPrice);
@@ -130,7 +137,7 @@ function formatToHTML(products) {
         itemRemoveButton = document.createElement("button");
         itemRemoveButton.className = "cart-management-button";
         itemRemoveButton.addEventListener("click", () => {
-            removeFromCart(products[i].id);
+            removeFromCart(book.id);
         });
         itemRemoveButton.type = "button"; // This ensures that the button does not default to submitting to the form
         itemRemoveButton.textContent = "Remove from cart";
