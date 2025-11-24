@@ -23,10 +23,9 @@ public class InventoryController {
 
     @GetMapping("/inventory")
     public String showInventoryForm(Model model, HttpSession session) {
-        // TODO check role and deny access
-//        if (session.getAttribute("role") != Person.Role.Employee) {
-//            return "error";
-//        }
+        if (session.getAttribute("role") != Person.Role.Employee) {
+            return "error/403";
+        }
         model.addAttribute("restockReq", new RestockRequest());
         return "inventory";
     }
@@ -37,40 +36,43 @@ public class InventoryController {
             HttpSession session)
     {
 
-        // TODO check role and deny access
-//        if (session.getAttribute("role") != Person.Role.Employee) {
-//            return "error";
-//        }
+        if (session.getAttribute("role") != Person.Role.Employee) {
+            return "error/403";
+        }
 
         if (bookService.existsByIsbn(restockReq.getIsbn())) {
             bookService.restockBookInInventory(restockReq.getIsbn(), restockReq.getQuantity());
             return "redirect:/";
         } else {
-            return "inventory";
+            return "redirect:/inventory/new";
         }
     }
 
     @GetMapping("/inventory/new")
-    public String newItemForm(HttpSession session) {
-        // TODO check role and deny access
-//        if (session.getAttribute("role") != Person.Role.Employee) {
-//            return "error";
-//        }
-        return "inventoryNew";
+    public String newItemForm(HttpSession session, Model model) {
+        if (session.getAttribute("role") != Person.Role.Employee) {
+            return "error/403";
+        }
+        model.addAttribute("book", new Book());
+        model.addAttribute("message", "Book not found in database, please create a new one.");
+        return "newInventory";
     }
 
     @PostMapping("inventory/new")
-    public ResponseEntity<?> newItem(
-            @RequestParam("book") Book book,
-            HttpSession session){
+    public String newItem(
+            @ModelAttribute Book book,
+            HttpSession session,
+            Model model) {
         if (session.getAttribute("role") != Person.Role.Employee) {
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+            return "error/403";
         }
         if (bookService.existsByIsbn(book.getIsbn())) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body("ISBN already exists.");
+            model.addAttribute("message", "ISBN already exists");
+            return "newInventory";
         }
         bookService.saveNewBook(book);
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(book);
+        model.addAttribute("message", "Created new book");
+        return "newInventory";
     }
 }
