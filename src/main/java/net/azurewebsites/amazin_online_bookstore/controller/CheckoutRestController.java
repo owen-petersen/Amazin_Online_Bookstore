@@ -50,7 +50,6 @@ public class CheckoutRestController {
             purchase.setQuantity(itemAndFreq.get(item));
             purchase.setDateTime(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
             purchaseService.saveNewPurchase(purchase);
-            System.out.println(purchase);
         }
 
         return true;
