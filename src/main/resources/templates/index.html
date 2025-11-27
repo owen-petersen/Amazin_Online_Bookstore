@@ -101,7 +101,8 @@
                     <span class="book-list-separator">|</span>
 
                     <span class="book-list-add-button">
-                        <button class="cart-management-button" th:onclick="'addToCart(' + ${book.id} + ')'">Add to cart</button>
+                        <button th:id="${book.id}" class="cart-management-button" th:onclick="'addToCart(' + ${book.id} + ')'" th:if="${book.inventory > 0}">Add to cart</button>
+                        <span class="book-sold-out-tag" th:if="${book.inventory == 0}">Sold out</span>
                     </span>
                 </div>
             </li>

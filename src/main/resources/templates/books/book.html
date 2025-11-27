@@ -60,9 +60,10 @@
                 </p>
 
                 <button class="cart-management-button"
-                        th:onclick="'addToCart(' + ${book.id} + ')'">
+                        th:onclick="'addToCart(' + ${book.id} + ')'" th:if="${book.inventory > 0}">
                     Add to cart
                 </button>
+                <span class="book-sold-out-tag" th:if="${book.inventory == 0}">Sold out</span>
             </div>
         </div>
     </section>
