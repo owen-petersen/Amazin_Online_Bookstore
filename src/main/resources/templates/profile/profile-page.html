@@ -2,7 +2,7 @@
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-    <th:block th:replace="~{base :: head('Profile')}"></th:block>
+    <th:block th:replace="~{base :: head('Profile page')}"></th:block>
     <link rel="stylesheet" href="/css/profile/profile-page.css">
 </head>
 <body>
@@ -13,8 +13,16 @@
         <div th:replace="~{profile/fragments :: profile-navigation}"></div>
 
         <div id="profile-content">
-            This is the profile-page content
-            <!-- Write content here -->
+            <div id="profile-page-tile">
+                <div id="profile-page-tile-name">
+                    <span class="profile-page-tile-label">Name: </span>
+                    <span class="profile-page-tile-info" th:text="${user.firstName} + ' ' +${user.lastName}"></span>
+                </div>
+                <div id="profile-page-tile-email">
+                    <span class="profile-page-tile-label">Email: </span>
+                    <span class="profile-page-tile-info" th:text="${user.email}"></span>
+                </div>
+            </div>
         </div>
     </div>
 </main>
