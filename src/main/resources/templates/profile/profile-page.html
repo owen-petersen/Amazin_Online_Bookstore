@@ -3,14 +3,14 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <th:block th:replace="~{base :: head('Profile')}"></th:block>
-    <link rel="stylesheet" href="/css/profile-page.css">
+    <link rel="stylesheet" href="/css/profile/profile-page.css">
 </head>
 <body>
 <header th:replace="~{base :: header}"></header>
 
 <main>
     <div id="profile-layout">
-        <div th:replace="~{profile/profile-fragments :: profile-navigation}"></div>
+        <div th:replace="~{profile/fragments :: profile-navigation}"></div>
 
         <div id="profile-content">
             This is the profile-page content
