@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.SessionAttribute;
  * The UserProfileController class manages request for information and pages unique to the user.
  *
  * @author Marvel Adotse-ogah
- * @version 2025-11-28
+ * @version 2025-11-29
  */
 @Controller
 @RequestMapping("/profile")
