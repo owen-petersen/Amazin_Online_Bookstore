@@ -1,4 +1,4 @@
-@import "profile.css";
+@import "_profile.css";
 
 #profile-content {
     display: flex;
