@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
 <th:block th:fragment="head(title)">
     <meta charset="UTF-8">
     <title th:text="${title}">Base html containing all the parts that should be on every page.</title>
@@ -46,7 +47,6 @@
         <div id="base-nav-navigation">
             <nav>
                 <div id="base-nav-navigation-links">
-                    <div class="base-nav-navigation-link-list-item"><a class="base-nav-navigation-link" href="/cart"><span>Cart</span></a></div>
                     <div class="base-nav-navigation-link-list-item"><a class="base-nav-navigation-link" href="/"><span>Home</span></a></div>
                     <div class="base-nav-navigation-link-list-item"><a class="base-nav-navigation-link" href="/inventory"><span>Inventory</span></a></div>
                 </div>
