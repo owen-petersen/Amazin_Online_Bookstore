@@ -52,6 +52,7 @@ public class HomeController {
                          @RequestParam(value = "author", required = false) String author,
                          @RequestParam(value = "genre", required = false) String genre,
                          @RequestParam(value = "publisher", required = false) String publisher,
+                         @RequestParam(value = "sort", required = false) String sort,
                          Model model,
                          HttpSession session) {
 
@@ -60,6 +61,18 @@ public class HomeController {
         }
 
         List<Book> books = bookService.searchAndFilter(q, author, genre, publisher);
+        books = bookService.applySorting(books, sort);
+
+        if (books.isEmpty() && q != null && !q.isBlank()) {
+            List<String> suggestions = bookService.suggestSimilarTitles(q);
+
+            if (!suggestions.isEmpty()) {
+                model.addAttribute("query", q);
+                model.addAttribute("suggestions", suggestions);
+                return "did_you_mean";
+            }
+        }
+
         model.addAttribute("books", books);
 
         model.addAttribute("q", q == null ? "" : q);
@@ -71,6 +84,7 @@ public class HomeController {
         model.addAttribute("authors", bookService.getAllAuthors());
         model.addAttribute("genres", bookService.getAllGenres());
         model.addAttribute("publishers", bookService.getAllPublishers());
+        model.addAttribute("sort", sort);
 
         return "index";
     }

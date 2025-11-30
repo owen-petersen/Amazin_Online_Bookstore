@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="~{base :: head('Search suggestions')}"></th:block>
+    <link rel="stylesheet" href="/css/home.css"/>
+</head>
+<body>
+
+<header th:replace="~{base :: header}"></header>
+
+<main id="home-content-wrapper">
+    <section id="book-list-section">
+        <h2>No results for "<span th:text="${query}"></span>"</h2>
+
+        <p th:if="${#lists.isEmpty(suggestions)}">
+            We couldn't find any similar titles.
+        </p>
+
+        <div th:if="${!#lists.isEmpty(suggestions)}">
+            <p>Did you mean:</p>
+            <ul>
+                <li th:each="s : ${suggestions}">
+                    <a th:href="@{/search(q=${s})}" th:text="${s}"></a>
+                </li>
+            </ul>
+        </div>
+
+        <p>
+            <a th:href="@{/}">Back to home</a>
+        </p>
+    </section>
+</main>
+
+<footer th:replace="~{base :: footer}"></footer>
+
+</body>
+</html>

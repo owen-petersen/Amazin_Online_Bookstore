@@ -54,6 +54,19 @@
                     </select>
                 </label>
 
+                <label>
+                    Sort by:
+                    <select name="sort">
+                        <option value="" th:selected="${sort == ''}">Default</option>
+                        <option value="priceAsc"  th:selected="${sort == 'priceAsc'}">Price: Low → High</option>
+                        <option value="priceDesc" th:selected="${sort == 'priceDesc'}">Price: High → Low</option>
+                        <option value="yearDesc"  th:selected="${sort == 'yearDesc'}">Newest First</option>
+                        <option value="yearAsc"   th:selected="${sort == 'yearAsc'}">Oldest First</option>
+                        <option value="titleAsc"  th:selected="${sort == 'titleAsc'}">Title: A → Z</option>
+                        <option value="titleDesc" th:selected="${sort == 'titleDesc'}">Title: Z → A</option>
+                    </select>
+                </label>
+
                 <button type="submit">Apply filters</button>
             </form>
         </section>
