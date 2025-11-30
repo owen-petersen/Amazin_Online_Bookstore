@@ -1,5 +1,70 @@
 @import "_profile.css";
 
 #profile-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 40px;
+}
 
+#purchase-history-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    justify-self: left;
+    align-items: center;
+    font-size: 40px;
+    font-weight: 550;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #dedede;
+    margin-bottom: 50px;
+}
+
+#purchase-history-items {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    border: 1px solid #dedede;
+    border-radius: 7px;
+}
+
+.purchase-history-item {
+    display: flex;
+    flex-direction: row;
+    padding: 10px 0;
+    border-bottom: 1px solid #dedede;
+}
+
+.purchase-history-item:first-child {
+    border-top: 1px solid #dedede;
+}
+
+.purchase-history-item-date {
+    box-sizing: border-box;
+    padding-left: 10px;
+    width: 250px;
+}
+
+.purchase-history-item-id {
+    box-sizing: border-box;
+    padding-left: 10px;
+    width: 200px;
+    border-left: 1px solid #dedede;
+}
+
+.purchase-history-item-book {
+    box-sizing: border-box;
+    padding-left: 10px;
+    min-width: 500px;
+    width: 100%;
+    border-left: 1px solid #dedede;
+}
+
+.purchase-history-item-qty {
+    box-sizing: border-box;
+    padding-left: 10px;
+    width: 100px;
+    border-left: 1px solid #dedede;
 }

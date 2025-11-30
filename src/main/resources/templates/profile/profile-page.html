@@ -14,11 +14,11 @@
 
         <div id="profile-content">
             <div id="profile-page-tile">
-                <div id="profile-page-tile-name">
+                <div id="profile-page-tile-name" class="profile-page-tile-section">
                     <span class="profile-page-tile-label">Name: </span>
                     <span class="profile-page-tile-info" th:text="${user.firstName} + ' ' +${user.lastName}"></span>
                 </div>
-                <div id="profile-page-tile-email">
+                <div id="profile-page-tile-email" class="profile-page-tile-section">
                     <span class="profile-page-tile-label">Email: </span>
                     <span class="profile-page-tile-info" th:text="${user.email}"></span>
                 </div>
