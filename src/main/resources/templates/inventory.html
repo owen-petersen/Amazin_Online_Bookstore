@@ -8,21 +8,21 @@
 <header th:replace="~{base :: header}"></header>
 
 <div id="inventory-form-container">
-<h1>Restock Inventory</h1>
+    <h1>Restock Inventory</h1>
 
-<form th:action="@{/inventory}" th:method="post" th:object="${restockReq}">
-    <div class="form-row">
-        <label for="isbn">ISBN</label>
-        <input id="isbn" type="text" th:field="*{isbn}" />
-    </div>
+    <form th:action="@{/inventory}" th:method="post" th:object="${restockReq}">
+        <div class="form-row">
+            <label for="isbn">ISBN</label>
+            <input id="isbn" type="text" th:field="*{isbn}" />
+        </div>
 
-    <div class="form-row">
-        <label for="restockCount">Restock Count</label>
-        <input id="restockCount" type="number" th:field="*{quantity}" min="0" step="1" />
-    </div>
+        <div class="form-row">
+            <label for="restockCount">Restock Count</label>
+            <input id="restockCount" type="number" th:field="*{quantity}" min="0" step="1" />
+        </div>
 
-    <button type="submit">Submit</button>
-</form>
+        <button type="submit">Submit</button>
+    </form>
 </div>
 <footer th:replace="~{base :: footer}"></footer>
 </body>

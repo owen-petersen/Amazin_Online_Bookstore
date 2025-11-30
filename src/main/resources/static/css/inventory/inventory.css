@@ -1,3 +1,16 @@
+#inventory-form-container {
+    display: flex;
+    flex-direction: column;
+    padding: 40px 0 0 60px;
+}
+
+h1 {
+    font-weight: 550;
+    width: fit-content;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #dedede;
+}
+
 .form-row {
     margin-bottom: 12px;
     display: flex;
@@ -7,7 +20,7 @@
 
 label {
     width: 140px;
-    font-weight: 600;
+    font-weight: 550;
 }
 
 input {
