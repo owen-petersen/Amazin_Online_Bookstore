@@ -5,20 +5,31 @@ import net.azurewebsites.amazin_online_bookstore.entity.JaccardDistance;
 import net.azurewebsites.amazin_online_bookstore.entity.Person;
 import net.azurewebsites.amazin_online_bookstore.entity.Purchase;
 import net.azurewebsites.amazin_online_bookstore.repository.JaccardDistanceRepository;
+import net.azurewebsites.amazin_online_bookstore.repository.PersonRepository;
 import net.azurewebsites.amazin_online_bookstore.repository.PurchaseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.HashSet;
-
+/**
+ * The PersonService class handles the typical operations for managing users.
+ *
+ * @author Marvel Adotse-ogah
+ * @version 2025-11-17
+ */
 @Service
 public class PersonService {
-
+	@Autowired
+    PersonRepository personRepository;
     @Autowired
     private PurchaseRepository purchaseRepository;
     @Autowired
     private JaccardDistanceRepository jaccardRepository;
+
+    public Person findById(Integer userId) {
+        return personRepository.findById(userId).orElse(null);
+    }
 
     public HashSet<Book> getPurchasedBooks(Person person) {
         HashSet<Book> purchasedBooks = new HashSet<>();

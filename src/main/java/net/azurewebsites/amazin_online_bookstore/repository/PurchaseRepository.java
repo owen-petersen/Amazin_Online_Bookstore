@@ -5,8 +5,10 @@ import net.azurewebsites.amazin_online_bookstore.entity.Purchase;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface PurchaseRepository extends CrudRepository<Purchase,Integer> {
 
     List<Purchase> findAllByBuyer(Person buyer);
+    Optional<Purchase> findById(Integer id);
 }

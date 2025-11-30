@@ -9,4 +9,6 @@ public interface PersonRepository extends CrudRepository<Person,Integer> {
 
     Optional<Person> findByUsername(String username);
     Person findByUsernameAndPassword(String username, String password);
+
+    Optional<Person> findById(Integer userId);
 }
