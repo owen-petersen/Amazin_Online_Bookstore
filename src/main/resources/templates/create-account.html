@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="~{base :: head('Create account')}"></th:block>
+    <link rel="stylesheet" href="/css/create-account.css">
+</head>
+
+<body>
+<div class="container">
+    <div class="create-account-card">
+        <h2>Amazin Online Bookstore</h2>
+        <a class="subtitle" href="/create-account">Create a new account</a>
+
+        <p th:if="${error}" class="error" th:text="${error}"></p>
+
+        <form th:action="@{/create-account}" method="post">
+            <label>Username</label>
+            <input type="text" name="username" required>
+
+            <label>Password</label>
+            <input type="password" name="password" required>
+
+            <button type="submit">Create account</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>
