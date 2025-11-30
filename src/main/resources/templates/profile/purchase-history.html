@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="~{base :: head('Purchase history')}"></th:block>
+    <link rel="stylesheet" href="/css/profile/purchase-history.css">
+</head>
+<body>
+<header th:replace="~{base :: header}"></header>
+
+<main>
+    <div id="profile-layout">
+        <div th:replace="~{profile/_fragments :: profile-navigation}"></div>
+
+        <div id="profile-content">
+            <!-- Write content here -->
+            <div id="purchase-history-title">
+                <span>PURCHASE HISTORY</span>
+            </div>
+            <div id="purchase-history-items">
+                <div class="purchase-history-item">
+                    <span class="purchase-history-item-date" style="text-decoration: underline black solid 2px;">DATE</span>
+                    <span class="purchase-history-item-id" style="text-decoration: underline black solid 2px;">PURCHASE ID</span>
+                    <span class="purchase-history-item-book" style="text-decoration: underline black solid 2px;">TITLE</span>
+                    <span class="purchase-history-item-qty" style="text-decoration: underline black solid 2px;">QTY</span>
+                </div>
+                <div class="purchase-history-item"
+                     th:each="purchase : ${purchases}">
+                    <span class="purchase-history-item-date" th:text="${purchase.dateTime}"></span>
+                    <span class="purchase-history-item-id" th:text="${purchase.id}"></span>
+                    <span class="purchase-history-item-book" th:text="${purchase.purchasedBook.title}"></span>
+                    <span class="purchase-history-item-qty" th:text="${purchase.quantity}"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer th:replace="~{base :: footer}"></footer>
+</body>
+</html>

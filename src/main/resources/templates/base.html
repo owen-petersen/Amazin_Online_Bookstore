@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
 <th:block th:fragment="head(title)">
     <meta charset="UTF-8">
     <title th:text="${title}">Base html containing all the parts that should be on every page.</title>
     <link rel="stylesheet" href="/css/base-navigation.css">
-    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/_global.css">
 </th:block>
 <head>
     <meta charset="UTF-8">
@@ -35,6 +36,11 @@
                     </form>
                 </div>
                 <div id="base-nav-user-section-box">
+                    <div id="base-nav-profile">
+                        <a href="/profile/">
+                            <img id="profile-img" class="user-section-icon" src="/images/icons/user-profile.png" alt="User profile image">
+                        </a>
+                    </div>
                     <div id="base-nav-cart">
                         <a href="/cart">
                             <img id="shopping-cart-img" class="user-section-icon" src="/images/icons/shopping-cart.png" alt="Shopping cart image">
@@ -46,7 +52,6 @@
         <div id="base-nav-navigation">
             <nav>
                 <div id="base-nav-navigation-links">
-                    <div class="base-nav-navigation-link-list-item"><a class="base-nav-navigation-link" href="/cart"><span>Cart</span></a></div>
                     <div class="base-nav-navigation-link-list-item"><a class="base-nav-navigation-link" href="/"><span>Home</span></a></div>
                     <div class="base-nav-navigation-link-list-item"><a class="base-nav-navigation-link" href="/inventory"><span>Inventory</span></a></div>
                     <div class="base-nav-navigation-link-list-item"><a class="base-nav-navigation-link" href="/recommendations"><span>Recommendations</span></a></div>
