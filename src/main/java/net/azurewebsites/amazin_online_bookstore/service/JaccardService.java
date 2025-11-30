@@ -18,10 +18,10 @@ public class JaccardService {
     @Autowired
     private PurchaseRepository purchaseRepository;
     @Autowired
-    PersonRepository personRepository;
+    private PersonRepository personRepository;
     @Autowired
-    JaccardDistanceRepository jaccardRepository;
-
+    private JaccardDistanceRepository jaccardRepository;
+    @Autowired
     private PersonService personService;
 
     public double calculateJaccardDistance(Person person1, Person person2) {

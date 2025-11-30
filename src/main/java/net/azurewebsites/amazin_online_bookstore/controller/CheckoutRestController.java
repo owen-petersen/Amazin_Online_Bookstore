@@ -2,6 +2,7 @@ package net.azurewebsites.amazin_online_bookstore.controller;
 
 import jakarta.servlet.http.HttpSession;
 import net.azurewebsites.amazin_online_bookstore.datatransferobj.BookOrder;
+import net.azurewebsites.amazin_online_bookstore.entity.JaccardDistance;
 import net.azurewebsites.amazin_online_bookstore.entity.Person;
 import net.azurewebsites.amazin_online_bookstore.entity.Purchase;
 import net.azurewebsites.amazin_online_bookstore.repository.PersonRepository;
@@ -28,17 +29,22 @@ import java.util.HashMap;
 @RestController
 @RequestMapping("/internal/checkout")
 public class CheckoutRestController {
-    PersonRepository personRepository;
-
     BookService bookService;
+    PersonRepository personRepository;
     JaccardService jaccardService;
     PersonService personService;
     PurchaseService purchaseService;
 
-    public CheckoutRestController(BookService bookService,  PersonService personService, PurchaseService purchaseService) {
+    public CheckoutRestController(BookService bookService,
+                                  PersonService personService,
+                                  PurchaseService purchaseService,
+                                  PersonRepository personRepository,
+                                  JaccardService jaccardService) {
         this.personService = personService;
         this.purchaseService = purchaseService;
         this.bookService = bookService;
+        this.personRepository = personRepository;
+        this.jaccardService = jaccardService;
     }
 
     @PostMapping("/purchase")

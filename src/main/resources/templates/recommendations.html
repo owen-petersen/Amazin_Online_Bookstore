@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <th:block th:replace="~{base :: head('Amazin Bookstore')}"></th:block>
+    <!--Just re-using the css for home page since recommendations is a list of books -->
+    <link rel="stylesheet" href="/css/home.css"/>
+</head>
+
+<body>
+<header th:replace="~{base :: header}"></header>
+
+<main id="home-content-wrapper">
+    <script src="/js/cart-management.js"></script>
+
+    <section id="book-list-section">
+
+        <h2 class="section-title">Recommended Books</h2>
+
+        <!-- If no books -->
+        <div th:if="${#lists.isEmpty(books)}" class="book-list-empty">
+            <p>No recommendations right now.</p>
+        </div>
+
+        <!-- If we have books -->
+        <ul th:if="${!#lists.isEmpty(books)}" id="book-list">
+            <li class="book-list-item"
+                th:each="book : ${books}">
+
+                <!-- Cover image based on book.id -->
+                <img class="book-cover"
+                     th:src="@{'/images.book/' + ${book.id} + '.png'}"
+                     th:alt="'Cover for ' + ${book.title}"
+                     style="width:120px; height:auto; margin-right:1rem;">
+
+                <!-- Title links to details page -->
+                <a class="book-list-title"
+                   th:href="@{'/books/' + ${book.id}}"
+                   th:text="${book.title}">
+                    Book Title
+                </a>
+
+                <div class="book-list-meta">
+                    <span class="book-list-author"
+                          th:text="${book.author}">Author Name</span>
+
+                    <span class="book-list-separator">|</span>
+
+                    <span class="book-list-genre"
+                          th:text="${book.genre}">Genre</span>
+
+                    <span class="book-list-separator">|</span>
+
+                    <span class="book-list-price">
+                        $<span th:text="${#numbers.formatDecimal(book.price, 1, 'COMMA', 2, 'POINT')}">0.00</span>
+                    </span>
+
+                    <span class="book-list-separator">|</span>
+
+                    <span class="book-list-add-button">
+                        <button class="cart-management-button" th:onclick="'addToCart(' + ${book.id} + ')'">Add to cart</button>
+                    </span>
+                </div>
+            </li>
+        </ul>
+    </section>
+</main>
+
+<footer th:fragment="footer">
+    <div id="base-nav-footer">
+        <div id="base-nav-footer-container">
+            <div id="base-nav-site-links">
+                <!-- footer content placeholder -->
+            </div>
+            <div id="base-nav-contact-about-links">
+                <!-- footer content placeholder -->
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
