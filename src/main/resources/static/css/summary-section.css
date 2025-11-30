@@ -2,7 +2,6 @@
     display: flex;
     flex: 2;
     flex-direction: column;
-    /*background-color: lightblue;*/
     min-width: 300px;
     max-width: 300px;
     min-height: 400px;
@@ -14,8 +13,7 @@
     margin-left: 20px;
     padding: 10px;
     position: sticky;
-    top: 80px;
-    /*z-index: -1;*/
+    top: 120px;
 }
 
 #summary-title {

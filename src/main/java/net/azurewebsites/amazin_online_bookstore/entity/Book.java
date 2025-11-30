@@ -11,9 +11,6 @@ public class Book {
     @GeneratedValue
     private Integer id;
     private String title;
-    // TODO OP 25-Oct-2025 For now leaving picture as a string but might need to change this one we
-    //  actually get to implementing storing and displaying pictures
-    private String picture;
     private String author;
     private String isbn;
     private String publisher;
@@ -31,9 +28,6 @@ public class Book {
 
     public String getTitle() {return title;}
     public void  setTitle(String title) {this.title = title;}
-
-    public String getPicture() {return picture;}
-    public void setPicture(String picture) {this.picture = picture;}
 
     public String getAuthor() {return author;}
     public void setAuthor(String author) {this.author = author;}
@@ -73,4 +67,21 @@ public class Book {
     // Constructors
 
     public Book() {}
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", author='" + author + '\'' +
+                ", isbn='" + isbn + '\'' +
+                ", publisher='" + publisher + '\'' +
+                ", publishedYear=" + publishedYear +
+                ", edition=" + edition +
+                ", genre='" + genre + '\'' +
+                ", inventory=" + inventory +
+                ", numOfPages=" + numOfPages +
+                ", price=" + price +
+                '}';
+    }
 }
