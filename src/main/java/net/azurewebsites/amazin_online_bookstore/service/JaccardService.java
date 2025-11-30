@@ -3,7 +3,6 @@ package net.azurewebsites.amazin_online_bookstore.service;
 import net.azurewebsites.amazin_online_bookstore.entity.Book;
 import net.azurewebsites.amazin_online_bookstore.entity.JaccardDistance;
 import net.azurewebsites.amazin_online_bookstore.entity.Person;
-import net.azurewebsites.amazin_online_bookstore.entity.Purchase;
 import net.azurewebsites.amazin_online_bookstore.repository.JaccardDistanceRepository;
 import net.azurewebsites.amazin_online_bookstore.repository.PersonRepository;
 import net.azurewebsites.amazin_online_bookstore.repository.PurchaseRepository;
@@ -12,7 +11,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -24,16 +22,11 @@ public class JaccardService {
     @Autowired
     JaccardDistanceRepository jaccardRepository;
 
-    public double calculateJaccardDistance(Person person1, Person person2) {
-        HashSet<Book> person1Books = new HashSet<Book>();
-        HashSet<Book> person2Books = new HashSet<Book>();
+    private PersonService personService;
 
-        for (Purchase purchase : purchaseRepository.findAllByBuyer(person1)) {
-            person1Books.add(purchase.getPurchasedBook());
-        }
-        for (Purchase purchase : purchaseRepository.findAllByBuyer(person2)) {
-            person2Books.add(purchase.getPurchasedBook());
-        }
+    public double calculateJaccardDistance(Person person1, Person person2) {
+        HashSet<Book> person1Books = personService.getPurchasedBooks(person1);
+        HashSet<Book> person2Books = personService.getPurchasedBooks(person2);
 
         HashSet<Book> intersection = new HashSet<Book>(person1Books);
         intersection.retainAll(person2Books);
@@ -68,10 +61,9 @@ public class JaccardService {
             } else {
                 // Doesn't exist so create new row in table
                 jaccardRepository.save(new JaccardDistance(person,
-                                                                   otherPerson,
-                                                                   jaccardIndex));
+                                                           otherPerson,
+                                                           jaccardIndex));
             }
         }
     }
-
 }
