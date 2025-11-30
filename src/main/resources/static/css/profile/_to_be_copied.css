@@ -1,0 +1,4 @@
+@import "_profile.css";
+
+/* Only the item with this id and the items it contains */
+#profile-content {}

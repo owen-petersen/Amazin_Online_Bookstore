@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="~{base :: head('Account details')}"></th:block>
+    <link rel="stylesheet" href="/css/profile/account-details.css">
+</head>
+<body>
+<header th:replace="~{base :: header}"></header>
+
+<main>
+    <div id="profile-layout">
+        <div th:replace="~{profile/_fragments :: profile-navigation}"></div>
+
+        <div id="profile-content">
+            <!-- Write content here -->
+            <div id="account-details-tile">
+                <div id="account-details-tile-username" class="account-details-tile-section">
+                    <span class="account-details-tile-label">Username: </span>
+                    <span class="account-details-tile-info" th:text="${user.username}"></span>
+                </div>
+                <div id="account-details-tile-name" class="account-details-tile-section">
+                    <span class="account-details-tile-label">Name: </span>
+                    <span class="account-details-tile-info" th:text="${user.firstName} + ' ' +${user.lastName}"></span>
+                </div>
+                <div id="account-details-tile-email" class="account-details-tile-section">
+                    <span class="account-details-tile-label">Email: </span>
+                    <span class="account-details-tile-info" th:text="${user.email}"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer th:replace="~{base :: footer}"></footer>
+</body>
+</html>

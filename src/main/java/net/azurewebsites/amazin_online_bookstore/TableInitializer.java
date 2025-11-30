@@ -107,9 +107,17 @@ public class TableInitializer implements CommandLineRunner {
 
         Purchase purchase = new Purchase();
         purchase.setDateTime("Oct25");
+        purchase.setBuyer(person);
         purchase.setPurchasedBook(book);
         purchase.setQuantity(1);
         purchaseRepository.save(purchase);
+
+        Purchase purchase2 = new Purchase();
+        purchase2.setDateTime("Oct26");
+        purchase2.setBuyer(person);
+        purchase2.setPurchasedBook(twoCities);
+        purchase2.setQuantity(1);
+        purchaseRepository.save(purchase2);
 
     }
 }
