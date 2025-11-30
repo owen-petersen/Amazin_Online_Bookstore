@@ -4,7 +4,7 @@
     padding: 40px 0 0 60px;
 }
 
-h1 {
+#inventory-form-container h1 {
     font-weight: 550;
     width: fit-content;
     padding-bottom: 20px;
