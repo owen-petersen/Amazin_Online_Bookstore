@@ -34,6 +34,9 @@ public class JaccardService {
         HashSet<Book> union = new HashSet<Book>(person1Books);
         union.addAll(person2Books);
 
+        // Avoid divide-by-zero error
+        if (union.isEmpty()) { return 0; }
+
         return ((double) intersection.size()) / ((double) union.size());
     }
 

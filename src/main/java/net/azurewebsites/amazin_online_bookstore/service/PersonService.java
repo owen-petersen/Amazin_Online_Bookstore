@@ -50,7 +50,7 @@ public class PersonService {
 
             for (Book book : similarBooks) {
                 recommendedBooks.add(book);
-                if (recommendedBooks.size() >= 5) {
+                if (recommendedBooks.size() >= 3) {
                     return recommendedBooks;
                 }
             }
