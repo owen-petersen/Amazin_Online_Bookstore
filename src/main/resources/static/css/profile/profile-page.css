@@ -23,3 +23,7 @@
 .profile-page-tile-section {
     padding: 10px 0 10px;
 }
+
+.profile-page-tile-label {
+    font-weight: 600;
+}
