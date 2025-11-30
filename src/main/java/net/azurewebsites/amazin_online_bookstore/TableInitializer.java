@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
+
 @Component
 public class TableInitializer implements CommandLineRunner {
 
@@ -354,143 +356,146 @@ public class TableInitializer implements CommandLineRunner {
 
         // Person1: Non-Fiction & Historical Fiction
         Purchase p1 = new Purchase();
-        p1.setDateTime("Jan02");
+        p1.setDateTime(LocalDateTime.of(2024, 1, 2, 10, 15));
         p1.setBuyer(person1);
         p1.setPurchasedBook(sapiens);
         p1.setQuantity(1);
         purchaseRepository.save(p1);
 
         Purchase p2 = new Purchase();
-        p2.setDateTime("Jan05");
+        p2.setDateTime(LocalDateTime.of(2024, 1, 5, 11, 45));
         p2.setBuyer(person1);
         p2.setPurchasedBook(litHistory);
         p2.setQuantity(1);
         purchaseRepository.save(p2);
 
         Purchase p3 = new Purchase();
-        p3.setDateTime("Jan08");
+        p3.setDateTime(LocalDateTime.of(2024, 1, 8, 14, 20));
         p3.setBuyer(person1);
         p3.setPurchasedBook(geisha);
         p3.setQuantity(1);
         purchaseRepository.save(p3);
 
         Purchase p4 = new Purchase();
-        p4.setDateTime("Jan12");
+        p4.setDateTime(LocalDateTime.of(2024, 1, 12, 9, 10));
         p4.setBuyer(person1);
         p4.setPurchasedBook(goneWind);
         p4.setQuantity(1);
         purchaseRepository.save(p4);
 
         Purchase p5 = new Purchase();
-        p5.setDateTime("Jan15");
+        p5.setDateTime(LocalDateTime.of(2024, 1, 15, 16, 35));
         p5.setBuyer(person1);
         p5.setPurchasedBook(twoCities);
         p5.setQuantity(1);
         purchaseRepository.save(p5);
 
+
 // Person2: Historical Fiction & Fiction
         Purchase p6 = new Purchase();
-        p6.setDateTime("Feb01");
+        p6.setDateTime(LocalDateTime.of(2024, 2, 1, 13, 55));
         p6.setBuyer(person2);
         p6.setPurchasedBook(geisha);
         p6.setQuantity(1);
         purchaseRepository.save(p6);
 
         Purchase p7 = new Purchase();
-        p7.setDateTime("Feb04");
+        p7.setDateTime(LocalDateTime.of(2024, 2, 4, 10, 25));
         p7.setBuyer(person2);
         p7.setPurchasedBook(goneWind);
         p7.setQuantity(1);
         purchaseRepository.save(p7);
 
         Purchase p8 = new Purchase();
-        p8.setDateTime("Feb08");
+        p8.setDateTime(LocalDateTime.of(2024, 2, 8, 15, 40));
         p8.setBuyer(person2);
         p8.setPurchasedBook(mockingbird);
         p8.setQuantity(1);
         purchaseRepository.save(p8);
 
         Purchase p9 = new Purchase();
-        p9.setDateTime("Feb12");
+        p9.setDateTime(LocalDateTime.of(2024, 2, 12, 11, 5));
         p9.setBuyer(person2);
         p9.setPurchasedBook(gatsby);
         p9.setQuantity(1);
         purchaseRepository.save(p9);
 
         Purchase p10 = new Purchase();
-        p10.setDateTime("Feb15");
+        p10.setDateTime(LocalDateTime.of(2024, 2, 15, 17, 10));
         p10.setBuyer(person2);
         p10.setPurchasedBook(shining);
         p10.setQuantity(1);
         purchaseRepository.save(p10);
 
+
 // Person3: Science Fiction
         Purchase p11 = new Purchase();
-        p11.setDateTime("Mar01");
+        p11.setDateTime(LocalDateTime.of(2024, 3, 1, 12, 0));
         p11.setBuyer(person3);
         p11.setPurchasedBook(dune);
         p11.setQuantity(1);
         purchaseRepository.save(p11);
 
         Purchase p12 = new Purchase();
-        p12.setDateTime("Mar04");
+        p12.setDateTime(LocalDateTime.of(2024, 3, 4, 14, 30));
         p12.setBuyer(person3);
         p12.setPurchasedBook(neuromancer);
         p12.setQuantity(1);
         purchaseRepository.save(p12);
 
         Purchase p13 = new Purchase();
-        p13.setDateTime("Mar08");
+        p13.setDateTime(LocalDateTime.of(2024, 3, 8, 10, 50));
         p13.setBuyer(person3);
         p13.setPurchasedBook(androids);
         p13.setQuantity(1);
         purchaseRepository.save(p13);
 
         Purchase p14 = new Purchase();
-        p14.setDateTime("Mar12");
+        p14.setDateTime(LocalDateTime.of(2024, 3, 12, 9, 45));
         p14.setBuyer(person3);
         p14.setPurchasedBook(hailMary);
         p14.setQuantity(1);
         purchaseRepository.save(p14);
 
+
 // Person4: Science Fiction & Fantasy
         Purchase p15 = new Purchase();
-        p15.setDateTime("Apr01");
+        p15.setDateTime(LocalDateTime.of(2024, 4, 1, 8, 20));
         p15.setBuyer(person4);
         p15.setPurchasedBook(dune);
         p15.setQuantity(1);
         purchaseRepository.save(p15);
 
         Purchase p16 = new Purchase();
-        p16.setDateTime("Apr04");
+        p16.setDateTime(LocalDateTime.of(2024, 4, 4, 15, 10));
         p16.setBuyer(person4);
         p16.setPurchasedBook(neuromancer);
         p16.setQuantity(1);
         purchaseRepository.save(p16);
 
         Purchase p17 = new Purchase();
-        p17.setDateTime("Apr08");
+        p17.setDateTime(LocalDateTime.of(2024, 4, 8, 11, 0));
         p17.setBuyer(person4);
         p17.setPurchasedBook(androids);
         p17.setQuantity(1);
         purchaseRepository.save(p17);
 
         Purchase p18 = new Purchase();
-        p18.setDateTime("Apr12");
+        p18.setDateTime(LocalDateTime.of(2024, 4, 12, 17, 50));
         p18.setBuyer(person4);
         p18.setPurchasedBook(hobbit);
         p18.setQuantity(1);
         purchaseRepository.save(p18);
 
         Purchase p19 = new Purchase();
-        p19.setDateTime("Apr15");
+        p19.setDateTime(LocalDateTime.of(2024, 4, 15, 13, 25));
         p19.setBuyer(person4);
         p19.setPurchasedBook(lotr);
         p19.setQuantity(1);
         purchaseRepository.save(p19);
 
         Purchase p20 = new Purchase();
-        p20.setDateTime("Apr18");
+        p20.setDateTime(LocalDateTime.of(2024, 4, 18, 10, 40));
         p20.setBuyer(person4);
         p20.setPurchasedBook(got);
         p20.setQuantity(1);

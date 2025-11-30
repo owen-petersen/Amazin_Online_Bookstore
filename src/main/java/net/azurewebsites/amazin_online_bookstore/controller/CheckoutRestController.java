@@ -67,7 +67,7 @@ public class CheckoutRestController {
             purchase.setBuyer(personService.findById((Integer) session.getAttribute("userId")));
             purchase.setPurchasedBook(bookService.getById(item));
             purchase.setQuantity(itemAndFreq.get(item));
-            purchase.setDateTime(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+            purchase.setDateTime(LocalDateTime.now());
             purchaseService.saveNewPurchase(purchase);
         }
 
