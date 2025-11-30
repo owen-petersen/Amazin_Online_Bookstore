@@ -1,36 +1,34 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-
 <head>
-    <th:block th:replace="~{base :: head('Did you mean?')}"></th:block>
+    <th:block th:replace="~{base :: head('Search suggestions')}"></th:block>
     <link rel="stylesheet" href="/css/home.css"/>
 </head>
-
 <body>
+
 <header th:replace="~{base :: header}"></header>
 
 <main id="home-content-wrapper">
+    <section id="book-list-section">
+        <h2>No results for "<span th:text="${query}"></span>"</h2>
 
-    <h2 class="section-title">No exact matches found</h2>
+        <p th:if="${#lists.isEmpty(suggestions)}">
+            We couldn't find any similar titles.
+        </p>
 
-    <div class="book-list-empty">
-        <p>No results for <strong th:text="${query}">query</strong>.</p>
-        <p>Did you mean:</p>
+        <div th:if="${!#lists.isEmpty(suggestions)}">
+            <p>Did you mean:</p>
+            <ul>
+                <li th:each="s : ${suggestions}">
+                    <a th:href="@{/search(q=${s})}" th:text="${s}"></a>
+                </li>
+            </ul>
+        </div>
 
-        <ul style="list-style:none; padding:0; margin-top:15px;">
-            <li th:each="s : ${suggestions}" style="margin-bottom:10px;">
-                <a th:href="@{/search(q=${s})}"
-                   style="color:#1a73e8; font-weight:600; text-decoration:none;">
-                    <span th:text="${s}">Suggestion</span>
-                </a>
-            </li>
-        </ul>
-
-        <a href="/" class="nice-button" style="padding:8px 14px; margin-top:20px; display:inline-block;">
-            Back to home
-        </a>
-    </div>
-
+        <p>
+            <a th:href="@{/}">Back to home</a>
+        </p>
+    </section>
 </main>
 
 <footer th:replace="~{base :: footer}"></footer>
