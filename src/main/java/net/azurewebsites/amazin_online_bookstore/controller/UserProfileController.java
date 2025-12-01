@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * The UserProfileController class manages request for information and pages unique to the user.
@@ -44,8 +45,9 @@ public class UserProfileController {
         String x = getSessionUsername(session);
         if (x != null) return x;
         String username = (String) session.getAttribute("username");
-        Person user = personRepository.findByUsername(username);
-        model.addAttribute("user", user); // To add the current user
+        Optional<Person> user = personRepository.findByUsername(username);
+        if (user.isEmpty()) { return "/error/500"; }
+        model.addAttribute("user", user.get()); // To add the current user
         return "profile/profile-page";
     }
 
@@ -54,8 +56,9 @@ public class UserProfileController {
         String x = getSessionUsername(session);
         if (x != null) return x;
         String username = (String) session.getAttribute("username");
-        Person user = personRepository.findByUsername(username);
-        model.addAttribute("user", user);
+        Optional<Person> user = personRepository.findByUsername(username);
+        if (user.isEmpty()) { return "/error/500"; }
+            model.addAttribute("user", user.get());
         return "profile/profile-page";
     }
 
@@ -64,9 +67,10 @@ public class UserProfileController {
         String x = getSessionUsername(session);
         if (x != null) return x;
         String username = (String) session.getAttribute("username");
-        Person user = personRepository.findByUsername(username);
-        List<Purchase> purchases = purchaseRepository.findByBuyerOrderByDateTimeAsc(user);
-        model.addAttribute("user", user);
+        Optional<Person> user = personRepository.findByUsername(username);
+        if (user.isEmpty()) { return "/error/500"; }
+        List<Purchase> purchases = purchaseRepository.findByBuyerOrderByDateTimeAsc(user.get());
+        model.addAttribute("user", user.get());
         model.addAttribute("purchases", purchases);
         return "profile/purchase-history";
     }
@@ -76,8 +80,9 @@ public class UserProfileController {
         String x = getSessionUsername(session);
         if (x != null) return x;
         String username = (String) session.getAttribute("username");
-        Person user = personRepository.findByUsername(username);
-        model.addAttribute("user", user);
+        Optional<Person> user = personRepository.findByUsername(username);
+        if (user.isEmpty()) { return "/error/500"; }
+        model.addAttribute("user", user.get());
         return "profile/account-details";
     }
 }

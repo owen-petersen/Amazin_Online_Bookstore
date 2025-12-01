@@ -2,6 +2,8 @@ package net.azurewebsites.amazin_online_bookstore.entity;
 
 import jakarta.persistence.*;
 
+import java.util.Objects;
+
 @Entity
 public class Book {
 
@@ -83,5 +85,16 @@ public class Book {
                 ", numOfPages=" + numOfPages +
                 ", price=" + price +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        return (Objects.equals(this.id, ((Book) o).id));
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.id);
     }
 }
