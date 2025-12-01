@@ -27,6 +27,21 @@ public class PersonService {
     @Autowired
     private JaccardDistanceRepository jaccardRepository;
 
+    public boolean createAccount(String username, String password, String firstName, String lastName, String email) {
+        if (username == null || password == null || username.isEmpty() || password.isEmpty()) {
+            return false;
+        }
+
+        Person person = new Person();
+        person.setUsername(username);
+        person.setPassword(password);
+        person.setFirstName(firstName);
+        person.setLastName(lastName);
+        person.setEmail(email);
+        personRepository.save(person);
+        return true;
+    }
+
     public Person findById(Integer userId) {
         return personRepository.findById(userId).orElse(null);
     }
