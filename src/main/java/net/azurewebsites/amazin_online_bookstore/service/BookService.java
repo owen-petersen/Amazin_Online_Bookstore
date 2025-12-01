@@ -263,31 +263,8 @@ public class BookService {
             return true;
         }
 
-        String[] qWords = qNorm.split("\\s+");
-        String[] cWords = cNorm.split("\\s+");
-
-        Set<String> qSet = new HashSet<>(Arrays.asList(qWords));
-        Set<String> cSet = new HashSet<>(Arrays.asList(cWords));
-
-        int common = 0;
-        for (String w : qSet) {
-            if (cSet.contains(w)) {
-                common++;
-            }
-        }
-
-        double overlap = (double) common / (double) qSet.size();
-
-        if (overlap >= 0.5 && qSet.size() > 1) {
-            return true;
-        }
-
-        int maxLen = Math.max(qNorm.length(), cNorm.length());
         int dist = levenshteinDistance(qNorm, cNorm);
-
-        int threshold = Math.max(2, maxLen / 4);
-
-        return dist <= threshold;
+        return dist <= 2;
     }
 
     private String normalize(String s) {
