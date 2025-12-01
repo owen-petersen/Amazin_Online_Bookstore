@@ -3,6 +3,8 @@ package net.azurewebsites.amazin_online_bookstore.entity;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 
+import java.time.LocalDateTime;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class PurchaseTest {
@@ -82,11 +84,11 @@ public class PurchaseTest {
     public void testSetDateTime() {
         assertNull(purchase.getDateTime());
 
-        String dateTime1 = "2025-11-01T14:30:00";
+        LocalDateTime dateTime1 = LocalDateTime.parse("2025-11-01T14:30:00");
         purchase.setDateTime(dateTime1);
         assertEquals(dateTime1, purchase.getDateTime());
 
-        String dateTime2 = "2025-12-15T09:00:00";
+        LocalDateTime dateTime2 = LocalDateTime.parse("2025-12-15T09:00:00");
         purchase.setDateTime(dateTime2);
         assertNotEquals(dateTime1, purchase.getDateTime());
         assertEquals(dateTime2, purchase.getDateTime());
