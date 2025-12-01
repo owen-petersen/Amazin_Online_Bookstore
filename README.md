@@ -69,6 +69,21 @@ It aims to provide the following key features:
   - Improve site UI
   - Add more robust search and filtering options
   - Save past purchases
+#### Dec 02, 2025
+- No Status
+  - None
+- Todo
+  - None
+- In Progress
+  - None
+- Done
+  - Implement book recommendations
+  - Improve site UI
+  - Implement more robust search and filtering options
+  - Save past purchases
+  - Implement a profile page
+  - Create account page
+  - Enforced access permissions when modifying inventory
 
 ---
 ## UML Diagrams
