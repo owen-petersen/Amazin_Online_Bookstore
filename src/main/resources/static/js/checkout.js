@@ -1,4 +1,4 @@
-let checkoutEndpoint = "/internal/checkout";
+let checkoutEndpoint = "/checkout";
 
 function completePayment() {
     submitPayment().then(() => {});
