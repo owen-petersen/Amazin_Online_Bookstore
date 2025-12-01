@@ -93,6 +93,10 @@ It aims to provide the following key features:
 
 ## Database Schema Diagram 
 ![](/src/main/resources/project%20diagrams/Database_schema.png)
+
+## Jaccard Distance Diagram
+![](/src/main/resources/project%20diagrams/JaccardDistance.png)
+
 ---
 ## Contributors
 - Faareh Bashir (@Faareh)
