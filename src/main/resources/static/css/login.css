@@ -5,85 +5,131 @@ body {
     background: #F7EEDB; /* soft bookstore cream */
 }
 
-.container {
-    height: 100vh;
+/* Center the whole card */
+.page {
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.login-card {
-    width: 420px;
-    padding: 40px;
-    background: #ffffff;
-    border-radius: 14px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-    text-align: center;
-
+/* Main card split into left (form) and right (image) */
+.card {
+    width: 900px;
+    max-width: 95%;
     display: flex;
-    flex-direction: column;
-    gap: 20px;
+    background: #ffffff;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
 }
 
+/* LEFT SIDE – form */
+.left {
+    flex: 1;
+    padding: 40px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 
-h2 {
+.brand {
     color: #4a3f35;
-    margin-bottom: 5px;
+    margin: 0 0 6px;
+    font-size: 26px;
 }
 
 .subtitle {
     color: #7a7a7a;
-    margin-bottom: 20px;
+    margin: 0 0 24px;
+    font-size: 14px;
 }
 
-form {
-    text-align: left;
+#loginForm {
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 16px;
 }
 
-label {
-    display: block;
+.field {
+    display: flex;
+    flex-direction: column;
+}
+
+.field label {
     margin-bottom: 4px;
     font-weight: 600;
     color: #4a3f35;
+    font-size: 14px;
 }
 
-input {
+.field input {
     width: 100%;
-    margin-top: 0;
     padding: 12px;
-    border-radius: 6px;
+    border-radius: 8px;
     border: 1px solid #c9c2b9;
     font-size: 14px;
     box-sizing: border-box;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-button {
+.field input:focus {
+    border-color: #4a3f35;
+    box-shadow: 0 0 0 2px rgba(74,63,53,0.18);
+}
+
+.btn {
     width: 100%;
     padding: 12px;
     background: #4a3f35;
     border: none;
     color: white;
-    border-radius: 6px;
+    border-radius: 8px;
     font-size: 16px;
     cursor: pointer;
-    transition: 0.2s ease-in-out;
+    transition: background 0.2s ease-in-out, box-shadow 0.2s, transform 0.05s;
     box-sizing: border-box;
 }
 
-button:hover {
+.btn:hover {
     background: #6a5847;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+}
+
+.btn:active {
+    transform: translateY(1px);
+    box-shadow: none;
 }
 
 .error {
     color: #b20000;
-    margin-bottom: 10px;
+    margin: 0 0 6px;
+    font-size: 13px;
 }
 
 .success {
     color: #0a7c29;
-    margin-bottom: 10px;
+    margin: 0 0 6px;
+    font-size: 13px;
+}
+
+/* RIGHT SIDE – image area */
+.right {
+    flex: 1;
+    min-height: 360px;
+    background-image: url("/images/login-side.jpg"); /* put your image here */
+    background-size: cover;
+    background-position: center;
+}
+
+/* Stack vertically on small screens */
+@media (max-width: 768px) {
+    .card {
+        flex-direction: column;
+    }
+    .right {
+        height: 220px;
+    }
 }
