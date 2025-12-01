@@ -2,6 +2,8 @@ package net.azurewebsites.amazin_online_bookstore.entity;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
+
 @Entity
 public class Purchase {
 
@@ -14,7 +16,7 @@ public class Purchase {
     private Person buyer;
     @ManyToOne(fetch = FetchType.EAGER)
     private Book purchasedBook;
-    private String dateTime; //TODO OP 25-Oct-2025 Replace with actual date/time type
+    private LocalDateTime dateTime;
     private Integer quantity;
 
 
@@ -28,8 +30,8 @@ public class Purchase {
     public Book getPurchasedBook() {return purchasedBook;}
     public void setPurchasedBook(Book purchasedBook) {this.purchasedBook = purchasedBook;}
 
-    public String getDateTime() {return dateTime;}
-    public void setDateTime(String dateTime) {this.dateTime = dateTime;}
+    public LocalDateTime getDateTime() {return dateTime;}
+    public void setDateTime(LocalDateTime dateTime) {this.dateTime = dateTime;}
 
     public Integer getQuantity() {return quantity;}
     public void setQuantity(Integer quantity) {this.quantity = quantity;}
@@ -38,4 +40,15 @@ public class Purchase {
     // Constructors
 
     public Purchase() {}
+
+    @Override
+    public String toString() {
+        return "Purchase{" +
+                "id=" + id +
+                ", \n\tbuyer=" + buyer +
+                ", \n\tpurchasedBook=" + purchasedBook +
+                ", \n\tdateTime='" + dateTime + '\'' +
+                ", quantity=" + quantity +
+                '}';
+    }
 }

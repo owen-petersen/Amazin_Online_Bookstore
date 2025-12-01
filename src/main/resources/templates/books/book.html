@@ -18,7 +18,7 @@
         <div style="display:flex; gap:2rem; align-items:flex-start;">
 
             <img class="book-cover-large"
-                 th:src="@{'/images.book/' + ${book.id} + '.png'}"
+                 th:src="@{'/images/book/' + ${book.id} + '.png'}"
                  th:alt="'Cover for ' + ${book.title}"
                  style="width:220px; height:auto; border-radius:4px;">
 
@@ -60,9 +60,10 @@
                 </p>
 
                 <button class="cart-management-button"
-                        th:onclick="'addToCart(' + ${book.id} + ')'">
+                        th:onclick="'addToCart(' + ${book.id} + ')'" th:if="${book.inventory > 0}">
                     Add to cart
                 </button>
+                <span class="book-sold-out-tag" th:if="${book.inventory == 0}">Sold out</span>
             </div>
         </div>
     </section>
