@@ -69,7 +69,7 @@ It aims to provide the following key features:
   - Improve site UI
   - Add more robust search and filtering options
   - Save past purchases
-#### Dec 02, 2025
+#### Dec 01, 2025
 - No Status
   - None
 - Todo
