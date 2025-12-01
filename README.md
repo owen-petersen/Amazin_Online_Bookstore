@@ -69,6 +69,21 @@ It aims to provide the following key features:
   - Improve site UI
   - Add more robust search and filtering options
   - Save past purchases
+#### Dec 01, 2025
+- No Status
+  - None
+- Todo
+  - None
+- In Progress
+  - None
+- Done
+  - Implement book recommendations
+  - Improve site UI
+  - Implement more robust search and filtering options
+  - Save past purchases
+  - Implement a profile page
+  - Create account page
+  - Enforced access permissions when modifying inventory
 
 ---
 ## UML Diagrams
@@ -78,6 +93,10 @@ It aims to provide the following key features:
 
 ## Database Schema Diagram 
 ![](/src/main/resources/project%20diagrams/Database_schema.png)
+
+## Jaccard Distance Diagram
+![](/src/main/resources/project%20diagrams/JaccardDistance.png)
+
 ---
 ## Contributors
 - Faareh Bashir (@Faareh)
