@@ -54,6 +54,36 @@
                     </select>
                 </label>
 
+                <label>
+                    Length:
+                    <select name="length">
+                        <option value="" th:selected="${length == ''}">Any length</option>
+                        <option value="short"  th:selected="${length == 'short'}">&lt; 200 pages (short)</option>
+                        <option value="medium" th:selected="${length == 'medium'}">200–400 pages (medium)</option>
+                        <option value="long"   th:selected="${length == 'long'}">&gt; 400 pages (long)</option>
+                    </select>
+                </label>
+
+                <label>
+                    <span>In stock only</span>
+                    <input type="checkbox"
+                           name="inStockOnly"
+                           th:checked="${inStockOnly}">
+                </label>
+
+                <label>
+                    Sort by:
+                    <select name="sort">
+                        <option value="" th:selected="${sort == ''}">Default</option>
+                        <option value="priceAsc"  th:selected="${sort == 'priceAsc'}">Price: Low → High</option>
+                        <option value="priceDesc" th:selected="${sort == 'priceDesc'}">Price: High → Low</option>
+                        <option value="yearDesc"  th:selected="${sort == 'yearDesc'}">Newest First</option>
+                        <option value="yearAsc"   th:selected="${sort == 'yearAsc'}">Oldest First</option>
+                        <option value="titleAsc"  th:selected="${sort == 'titleAsc'}">Title: A → Z</option>
+                        <option value="titleDesc" th:selected="${sort == 'titleDesc'}">Title: Z → A</option>
+                    </select>
+                </label>
+
                 <button type="submit">Apply filters</button>
             </form>
         </section>
