@@ -173,3 +173,20 @@
 #filter-form button:hover {
     background-color: #111111;
 }
+
+.suggestions-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 16px 0;
+}
+
+.suggestions-list li {
+    margin-bottom: 8px;
+}
+
+.suggestions-back-button {
+    margin-top: 20px;
+    padding: 8px 16px;
+    display: inline-flex;
+    text-decoration: none;
+}
