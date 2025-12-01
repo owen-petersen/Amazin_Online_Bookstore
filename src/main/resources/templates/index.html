@@ -55,6 +55,23 @@
                 </label>
 
                 <label>
+                    Length:
+                    <select name="length">
+                        <option value="" th:selected="${length == ''}">Any length</option>
+                        <option value="short"  th:selected="${length == 'short'}">&lt; 200 pages (short)</option>
+                        <option value="medium" th:selected="${length == 'medium'}">200–400 pages (medium)</option>
+                        <option value="long"   th:selected="${length == 'long'}">&gt; 400 pages (long)</option>
+                    </select>
+                </label>
+
+                <label>
+                    <span>In stock only</span>
+                    <input type="checkbox"
+                           name="inStockOnly"
+                           th:checked="${inStockOnly}">
+                </label>
+
+                <label>
                     Sort by:
                     <select name="sort">
                         <option value="" th:selected="${sort == ''}">Default</option>

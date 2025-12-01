@@ -195,6 +195,48 @@ public class BookService {
         return stream.toList();
     }
 
+    public List<Book> applyLengthAndInventoryFilters(List<Book> books,
+                                                     String length,
+                                                     Boolean inStockOnly) {
+
+        Stream<Book> stream = books.stream();
+
+        if (Boolean.TRUE.equals(inStockOnly)) {
+            stream = stream.filter(b ->
+                    b.getInventory() != null && b.getInventory() > 0
+            );
+        }
+
+        if (length != null && !length.isBlank()) {
+            switch (length) {
+                case "short":
+                    stream = stream.filter(b ->
+                            b.getNumOfPages() != null && b.getNumOfPages() < 200
+                    );
+                    break;
+
+                case "medium":
+                    stream = stream.filter(b ->
+                            b.getNumOfPages() != null &&
+                                    b.getNumOfPages() >= 200 &&
+                                    b.getNumOfPages() <= 400
+                    );
+                    break;
+
+                case "long":
+                    stream = stream.filter(b ->
+                            b.getNumOfPages() != null && b.getNumOfPages() > 400
+                    );
+                    break;
+
+                default:
+            }
+        }
+
+        return stream.toList();
+    }
+
+
     public List<String> suggestSimilarTitles(String query) {
         if (query == null || query.isBlank()) {
             return List.of();

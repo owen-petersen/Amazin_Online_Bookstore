@@ -38,6 +38,9 @@ public class HomeController {
         model.addAttribute("selectedAuthor", "");
         model.addAttribute("selectedGenre", "");
         model.addAttribute("selectedPublisher", "");
+        model.addAttribute("sort", "");
+        model.addAttribute("length", "");
+        model.addAttribute("inStockOnly", false);
 
         // dropdown options
         model.addAttribute("authors", bookService.getAllAuthors());
@@ -53,6 +56,8 @@ public class HomeController {
                          @RequestParam(value = "genre", required = false) String genre,
                          @RequestParam(value = "publisher", required = false) String publisher,
                          @RequestParam(value = "sort", required = false) String sort,
+                         @RequestParam(value = "length", required = false) String length,
+                         @RequestParam(value = "inStockOnly", required = false) Boolean inStockOnly,
                          Model model,
                          HttpSession session) {
 
@@ -61,6 +66,7 @@ public class HomeController {
         }
 
         List<Book> books = bookService.searchAndFilter(q, author, genre, publisher);
+        books = bookService.applyLengthAndInventoryFilters(books, length, inStockOnly);
         books = bookService.applySorting(books, sort);
 
         if (books.isEmpty() && q != null && !q.isBlank()) {
@@ -85,6 +91,8 @@ public class HomeController {
         model.addAttribute("genres", bookService.getAllGenres());
         model.addAttribute("publishers", bookService.getAllPublishers());
         model.addAttribute("sort", sort);
+        model.addAttribute("length", length == null ? "" : length);
+        model.addAttribute("inStockOnly", inStockOnly != null && inStockOnly);
 
         return "index";
     }
